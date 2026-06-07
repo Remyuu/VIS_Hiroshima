@@ -1,7 +1,7 @@
 site_name: VIS Hiroshima
 site_url: https://remyuu.github.io/VIS_Hiroshima/
-repo_url: https://github.com/remyuu/VIS_Hiroshima
-repo_name: remyuu/VIS_Hiroshima
+repo_url: https://github.com/ReMyuu/VIS_Hiroshima
+repo_name: ReMyuu/VIS_Hiroshima
 
 theme:
   name: material
