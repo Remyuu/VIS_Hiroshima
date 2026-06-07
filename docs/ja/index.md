@@ -11,4 +11,4 @@
 
 ## このサイトについて
 
-VIS Lab の [remo](https://remoooo.com) メンバーによって管理されています。
+[VIS Lab](http://vis.hiroshima-u.ac.jp/) の [remo](https://remoooo.com) メンバーによって管理されています。

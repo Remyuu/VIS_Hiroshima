@@ -11,4 +11,4 @@
 
 ## 关于
 
-由 VIS Lab 成员 [remo](https://remoooo.com) 维护。
+由 [VIS Lab](http://vis.hiroshima-u.ac.jp/) 成员 [remo](https://remoooo.com) 维护。

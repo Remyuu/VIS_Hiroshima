@@ -11,4 +11,4 @@ This site collects practical notes for VIS Lab members working with university s
 
 ## About
 
-Maintained by VIS Lab [remo](https://remoooo.com) members.
+Maintained by [VIS Lab](http://vis.hiroshima-u.ac.jp/) [remo](https://remoooo.com) members.
