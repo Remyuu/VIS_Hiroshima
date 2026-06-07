@@ -14,7 +14,39 @@ theme:
     - search.suggest
 
 nav:
-  - Home: index.md
+  - 首页: index.md
+  - 入门:
+      - SSH 是什么: getting-started/what-is-ssh.md
+      - 账号与准备工作: getting-started/accounts-and-prerequisites.md
+      - 第一次登录: getting-started/first-login.md
+  - SSH 登录:
+      - 密码登录: ssh/password-login.md
+      - SSH Key 登录: ssh/ssh-keys.md
+      - SSH Config: ssh/ssh-config.md
+      - 跳板机与端口转发: ssh/jump-hosts-and-tunnels.md
+  - 文件传输:
+      - 传输方式概览: file-transfer/overview.md
+      - SCP: file-transfer/scp.md
+      - Rsync: file-transfer/rsync.md
+      - SFTP: file-transfer/sftp.md
+  - 科学计算与 GPU:
+      - 计算环境概览: gpu/overview.md
+      - 登录节点与计算节点: gpu/login-vs-compute-nodes.md
+      - GPU 使用基础: gpu/gpu-basics.md
+      - 环境管理: gpu/environment-management.md
+      - 作业提交: gpu/job-submission.md
+  - 远程工作流:
+      - X11 Server: remote-work/x11-server.md
+      - VS Code Remote SSH: remote-work/vscode-remote-ssh.md
+      - Jupyter 与端口转发: remote-work/jupyter-and-port-forwarding.md
+  - 规范与安全:
+      - 使用规范: policies/usage-guidelines.md
+      - 安全注意事项: policies/security.md
+  - 排错:
+      - 连接问题: troubleshooting/connection.md
+      - 权限与文件问题: troubleshooting/permissions-and-files.md
+      - GPU 与环境问题: troubleshooting/gpu-and-environment.md
+      - FAQ: troubleshooting/faq.md
 
 markdown_extensions:
   - admonition
