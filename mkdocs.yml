@@ -5,7 +5,7 @@ repo_name: Remyuu/VIS_Hiroshima
 
 theme:
   name: material
-  language: zh
+  language: en
   features:
     - navigation.tabs
     - navigation.sections
@@ -18,50 +18,53 @@ plugins:
   - i18n:
       docs_structure: folder
       languages:
-        - locale: zh
-          name: 简体中文
+        - locale: en
+          name: English
           default: true
           build: true
           link: /
-        - locale: en
-          name: English
-          build: true
           site_name: VIS Hiroshima
           theme:
             language: en
+        - locale: zh
+          name: 简体中文
+          build: true
+          site_name: VIS Hiroshima
+          theme:
+            language: zh
           nav_translations:
-            首页: Home
-            入门: Getting Started
-            SSH 是什么: What Is SSH
-            账号与准备工作: Accounts and Prerequisites
-            第一次登录: First Login
-            SSH 登录: SSH Login
-            密码登录: Password Login
-            SSH Key 登录: SSH Key Login
+            Home: 首页
+            Getting Started: 入门
+            What Is SSH: SSH 是什么
+            Accounts and Prerequisites: 账号与准备工作
+            First Login: 第一次登录
+            SSH Login: SSH 登录
+            Password Login: 密码登录
+            SSH Key Login: SSH Key 登录
             SSH Config: SSH Config
-            跳板机与端口转发: Jump Hosts and Port Forwarding
-            文件传输: File Transfer
-            传输方式概览: Overview
+            Jump Hosts and Port Forwarding: 跳板机与端口转发
+            File Transfer: 文件传输
+            Overview: 传输方式概览
             SCP: SCP
             Rsync: Rsync
             SFTP: SFTP
-            科学计算与 GPU: Scientific Computing and GPU
-            计算环境概览: Computing Environment Overview
-            登录节点与计算节点: Login Nodes and Compute Nodes
-            GPU 使用基础: GPU Basics
-            环境管理: Environment Management
-            作业提交: Job Submission
-            远程工作流: Remote Workflows
+            Scientific Computing and GPU: 科学计算与 GPU
+            Computing Environment Overview: 计算环境概览
+            Login Nodes and Compute Nodes: 登录节点与计算节点
+            GPU Basics: GPU 使用基础
+            Environment Management: 环境管理
+            Job Submission: 作业提交
+            Remote Workflows: 远程工作流
             X11 Server: X11 Server
             VS Code Remote SSH: VS Code Remote SSH
-            Jupyter 与端口转发: Jupyter and Port Forwarding
-            规范与安全: Policies and Security
-            使用规范: Usage Guidelines
-            安全注意事项: Security Notes
-            排错: Troubleshooting
-            连接问题: Connection Issues
-            权限与文件问题: Permissions and Files
-            GPU 与环境问题: GPU and Environment Issues
+            Jupyter and Port Forwarding: Jupyter 与端口转发
+            Policies and Security: 规范与安全
+            Usage Guidelines: 使用规范
+            Security Notes: 安全注意事项
+            Troubleshooting: 排错
+            Connection Issues: 连接问题
+            Permissions and Files: 权限与文件问题
+            GPU and Environment Issues: GPU 与环境问题
             FAQ: FAQ
         - locale: ja
           name: 日本語
@@ -70,73 +73,73 @@ plugins:
           theme:
             language: ja
           nav_translations:
-            首页: ホーム
-            入门: はじめに
-            SSH 是什么: SSH とは
-            账号与准备工作: アカウントと準備
-            第一次登录: 初回ログイン
-            SSH 登录: SSH ログイン
-            密码登录: パスワードログイン
-            SSH Key 登录: SSH キーログイン
+            Home: ホーム
+            Getting Started: はじめに
+            What Is SSH: SSH とは
+            Accounts and Prerequisites: アカウントと準備
+            First Login: 初回ログイン
+            SSH Login: SSH ログイン
+            Password Login: パスワードログイン
+            SSH Key Login: SSH キーログイン
             SSH Config: SSH Config
-            跳板机与端口转发: 踏み台サーバーとポート転送
-            文件传输: ファイル転送
-            传输方式概览: 転送方法の概要
+            Jump Hosts and Port Forwarding: 踏み台サーバーとポート転送
+            File Transfer: ファイル転送
+            Overview: 転送方法の概要
             SCP: SCP
             Rsync: Rsync
             SFTP: SFTP
-            科学计算与 GPU: 科学計算と GPU
-            计算环境概览: 計算環境の概要
-            登录节点与计算节点: ログインノードと計算ノード
-            GPU 使用基础: GPU 利用の基礎
-            环境管理: 環境管理
-            作业提交: ジョブ投入
-            远程工作流: リモートワークフロー
+            Scientific Computing and GPU: 科学計算と GPU
+            Computing Environment Overview: 計算環境の概要
+            Login Nodes and Compute Nodes: ログインノードと計算ノード
+            GPU Basics: GPU 利用の基礎
+            Environment Management: 環境管理
+            Job Submission: ジョブ投入
+            Remote Workflows: リモートワークフロー
             X11 Server: X11 Server
             VS Code Remote SSH: VS Code Remote SSH
-            Jupyter 与端口转发: Jupyter とポート転送
-            规范与安全: 利用規則とセキュリティ
-            使用规范: 利用規則
-            安全注意事项: セキュリティ上の注意
-            排错: トラブルシューティング
-            连接问题: 接続の問題
-            权限与文件问题: 権限とファイルの問題
-            GPU 与环境问题: GPU と環境の問題
+            Jupyter and Port Forwarding: Jupyter とポート転送
+            Policies and Security: 利用規則とセキュリティ
+            Usage Guidelines: 利用規則
+            Security Notes: セキュリティ上の注意
+            Troubleshooting: トラブルシューティング
+            Connection Issues: 接続の問題
+            Permissions and Files: 権限とファイルの問題
+            GPU and Environment Issues: GPU と環境の問題
             FAQ: FAQ
 
 nav:
-  - 首页: index.md
-  - 入门:
-      - SSH 是什么: getting-started/what-is-ssh.md
-      - 账号与准备工作: getting-started/accounts-and-prerequisites.md
-      - 第一次登录: getting-started/first-login.md
-  - SSH 登录:
-      - 密码登录: ssh/password-login.md
-      - SSH Key 登录: ssh/ssh-keys.md
+  - Home: index.md
+  - Getting Started:
+      - What Is SSH: getting-started/what-is-ssh.md
+      - Accounts and Prerequisites: getting-started/accounts-and-prerequisites.md
+      - First Login: getting-started/first-login.md
+  - SSH Login:
+      - Password Login: ssh/password-login.md
+      - SSH Key Login: ssh/ssh-keys.md
       - SSH Config: ssh/ssh-config.md
-      - 跳板机与端口转发: ssh/jump-hosts-and-tunnels.md
-  - 文件传输:
-      - 传输方式概览: file-transfer/overview.md
+      - Jump Hosts and Port Forwarding: ssh/jump-hosts-and-tunnels.md
+  - File Transfer:
+      - Overview: file-transfer/overview.md
       - SCP: file-transfer/scp.md
       - Rsync: file-transfer/rsync.md
       - SFTP: file-transfer/sftp.md
-  - 科学计算与 GPU:
-      - 计算环境概览: gpu/overview.md
-      - 登录节点与计算节点: gpu/login-vs-compute-nodes.md
-      - GPU 使用基础: gpu/gpu-basics.md
-      - 环境管理: gpu/environment-management.md
-      - 作业提交: gpu/job-submission.md
-  - 远程工作流:
+  - Scientific Computing and GPU:
+      - Computing Environment Overview: gpu/overview.md
+      - Login Nodes and Compute Nodes: gpu/login-vs-compute-nodes.md
+      - GPU Basics: gpu/gpu-basics.md
+      - Environment Management: gpu/environment-management.md
+      - Job Submission: gpu/job-submission.md
+  - Remote Workflows:
       - X11 Server: remote-work/x11-server.md
       - VS Code Remote SSH: remote-work/vscode-remote-ssh.md
-      - Jupyter 与端口转发: remote-work/jupyter-and-port-forwarding.md
-  - 规范与安全:
-      - 使用规范: policies/usage-guidelines.md
-      - 安全注意事项: policies/security.md
-  - 排错:
-      - 连接问题: troubleshooting/connection.md
-      - 权限与文件问题: troubleshooting/permissions-and-files.md
-      - GPU 与环境问题: troubleshooting/gpu-and-environment.md
+      - Jupyter and Port Forwarding: remote-work/jupyter-and-port-forwarding.md
+  - Policies and Security:
+      - Usage Guidelines: policies/usage-guidelines.md
+      - Security Notes: policies/security.md
+  - Troubleshooting:
+      - Connection Issues: troubleshooting/connection.md
+      - Permissions and Files: troubleshooting/permissions-and-files.md
+      - GPU and Environment Issues: troubleshooting/gpu-and-environment.md
       - FAQ: troubleshooting/faq.md
 
 markdown_extensions:
