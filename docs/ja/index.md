@@ -4,10 +4,7 @@
 
 ## はじめに
 
-1. [SSHとは何か](getting-started/ssh-keys.md)
-2. SSH ログイン
-3. ファイル転送
-4. GPU コンピューティング
+// TODO: Translate to JA...
 
 ## このサイトについて
 

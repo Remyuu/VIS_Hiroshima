@@ -5,9 +5,7 @@
 ## 从这里开始
 
 1. [SSH 密钥是什么](getting-started/ssh-keys.md)
-2. SSH 登录
-3. 文件传输
-4. GPU 计算
+2. [Linux 的常用命令](getting-started/linux-commands.md)
 
 ## 关于
 
