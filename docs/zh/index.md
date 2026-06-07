@@ -67,5 +67,5 @@
 </div>
 
 <section class="vis-meta">
-  <p>由 <a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a> 与 <a href="https://remoooo.com">remo</a> 维护。</p>
+  <p>由 <a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a> 的 <a href="https://remoooo.com">remo</a> 维护。</p>
 </section>

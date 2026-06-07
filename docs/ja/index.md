@@ -67,5 +67,5 @@
 </div>
 
 <section class="vis-meta">
-  <p><a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a> と <a href="https://remoooo.com">remo</a> によって管理されています。</p>
+  <p><a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a> の <a href="https://remoooo.com">remo</a> によって管理されています。</p>
 </section>

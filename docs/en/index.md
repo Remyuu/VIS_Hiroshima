@@ -67,5 +67,5 @@ This documentation helps VIS Hiroshima lab members prepare their local computers
 </div>
 
 <section class="vis-meta">
-  <p>Maintained by <a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a> and <a href="https://remoooo.com">remo</a>.</p>
+  <p>Maintained by <a href="https://remoooo.com">remo</a> in <a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a>.</p>
 </section>
