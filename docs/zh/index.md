@@ -1,14 +1,14 @@
-# VIS Hiroshima Documentation
+# VIS Hiroshima 文档
 
-This site collects practical notes for VIS Lab members working with university servers and computing environments.
+本网站汇集了供 VIS Lab 成员在使用大学服务器和计算环境时参考的实用说明与笔记。
 
-## Start Here
+## 从这里开始
 
-1. [SSH Keys](getting-started/ssh-keys.md)
-2. SSH Login
-3. File Transfer
-4. GPU Computing
+1. [SSH 密钥是什么](getting-started/ssh-keys.md)
+2. SSH 登录
+3. 文件传输
+4. GPU 计算
 
-## About
+## 关于
 
-Maintained by VIS Lab members.
+由 VIS Lab 成员 [remo](https://remoooo.com) 维护。

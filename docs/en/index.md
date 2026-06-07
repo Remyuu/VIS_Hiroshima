@@ -4,11 +4,11 @@ This site collects practical notes for VIS Lab members working with university s
 
 ## Start Here
 
-1. [SSH Keys](getting-started/ssh-keys.md)
+1. [What is SSH](getting-started/ssh-keys.md)
 2. SSH Login
 3. File Transfer
 4. GPU Computing
 
 ## About
 
-Maintained by VIS Lab members.
+Maintained by VIS Lab [remo](https://remoooo.com) members.
