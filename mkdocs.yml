@@ -36,6 +36,7 @@ plugins:
             Home: 首页
             Getting Started: 入门
             SSH Keys: SSH 密钥
+            Common Linux Commands: 常用 Linux 命令
         - locale: ja
           name: 日本語
           build: true
@@ -46,11 +47,13 @@ plugins:
             Home: ホーム
             Getting Started: はじめに
             SSH Keys: SSH キー
+            Common Linux Commands: よく使う Linux コマンド
 
 nav:
   - Home: index.md
   - Getting Started:
       - SSH Keys: getting-started/ssh-keys.md
+      - Common Linux Commands: getting-started/linux-commands.md
 
 markdown_extensions:
   - admonition
