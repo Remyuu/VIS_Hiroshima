@@ -7,11 +7,29 @@ theme:
   name: material
   language: en
   features:
+    - content.code.copy
+    - navigation.footer
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.top
     - search.highlight
     - search.suggest
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
 
 plugins:
   - search
@@ -59,5 +77,10 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.details
   - pymdownx.superfences
+
+extra_css:
+  - assets/stylesheets/extra.css

@@ -1,0 +1,76 @@
+.vis-hero {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  margin: 1.2rem 0 1.5rem;
+  padding: 1.6rem 0 1.8rem;
+}
+
+.vis-kicker {
+  color: var(--md-accent-fg-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+}
+
+.vis-hero h1 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.vis-hero p:last-child {
+  color: var(--md-default-fg-color--light);
+  font-size: 1.05rem;
+  max-width: 42rem;
+}
+
+.vis-card-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  margin: 1.2rem 0 1.8rem;
+}
+
+.vis-card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  color: var(--md-default-fg-color);
+  display: block;
+  padding: 1rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.vis-card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.vis-card-label {
+  color: var(--md-accent-fg-color);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.vis-card strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.vis-card p {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+  margin: 0.45rem 0 0;
+}
+
+.vis-meta {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.82rem;
+  margin-top: 2rem;
+}
