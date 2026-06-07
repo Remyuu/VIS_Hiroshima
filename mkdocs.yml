@@ -52,9 +52,20 @@ plugins:
             language: zh
           nav_translations:
             Home: 首页
-            Getting Started: 入门
-            SSH Keys: SSH 密钥
+            Before You Connect: 连接前准备
+            Local Environment: 配置本机环境
+            Connecting to Servers: 连接服务器
+            SSH and Server Login: SSH 是什么以及如何连接
+            Tailscale Remote Access: 使用 Tailscale 远程连接
+            Daily Remote Workflow: 日常远程工作流
             Common Linux Commands: 常用 Linux 命令
+            VS Code Remote SSH: VS Code Remote SSH
+            File Transfer: 文件传输
+            Running Experiments: 运行实验
+            tmux and Running Experiments: tmux 和运行实验
+            Resource Guidelines: GPU / 硬盘 / 内存使用规范
+            Troubleshooting: 常见问题排查
+            FAQ: 常见问题
         - locale: ja
           name: 日本語
           build: true
@@ -63,15 +74,37 @@ plugins:
             language: ja
           nav_translations:
             Home: ホーム
-            Getting Started: はじめに
-            SSH Keys: SSH キー
+            Before You Connect: 接続前の準備
+            Local Environment: ローカル環境の設定
+            Connecting to Servers: サーバーへの接続
+            SSH and Server Login: SSH とは何か、接続方法
+            Tailscale Remote Access: Tailscale によるリモート接続
+            Daily Remote Workflow: 日常的なリモート作業
             Common Linux Commands: よく使う Linux コマンド
+            VS Code Remote SSH: VS Code Remote SSH
+            File Transfer: ファイル転送
+            Running Experiments: 実験の実行
+            tmux and Running Experiments: tmux と実験の実行
+            Resource Guidelines: GPU / ストレージ / メモリ利用規則
+            Troubleshooting: トラブルシューティング
+            FAQ: FAQ
 
 nav:
   - Home: index.md
-  - Getting Started:
-      - SSH Keys: getting-started/ssh-keys.md
-      - Common Linux Commands: getting-started/linux-commands.md
+  - Before You Connect:
+      - Local Environment: before-you-connect/local-environment.md
+  - Connecting to Servers:
+      - SSH and Server Login: connecting-to-servers/ssh-keys.md
+      - Tailscale Remote Access: connecting-to-servers/tailscale.md
+  - Daily Remote Workflow:
+      - Common Linux Commands: daily-remote-workflow/linux-commands.md
+      - VS Code Remote SSH: daily-remote-workflow/vscode-remote-ssh.md
+      - File Transfer: daily-remote-workflow/file-transfer.md
+  - Running Experiments:
+      - tmux and Running Experiments: running-experiments/tmux-and-experiments.md
+      - Resource Guidelines: running-experiments/resource-guidelines.md
+  - Troubleshooting:
+      - FAQ: troubleshooting/faq.md
 
 markdown_extensions:
   - admonition

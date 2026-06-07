@@ -4,16 +4,28 @@
   <p>Practical notes for VIS Lab members working with university servers and computing environments.</p>
 </section>
 
+This documentation helps VIS Hiroshima lab members prepare their local computers, connect to lab servers, and learn the basic workflow for remote experiments.
+
 <div class="vis-card-grid">
-  <a class="vis-card" href="getting-started/ssh-keys/">
-    <span class="vis-card-label">Getting Started</span>
-    <strong>SSH Keys</strong>
-    <p>Prepare key-based SSH access before using lab servers.</p>
+  <a class="vis-card" href="before-you-connect/local-environment/">
+    <span class="vis-card-label">Start Here</span>
+    <strong>Local Environment</strong>
+    <p>Prepare the tools needed before connecting to lab servers.</p>
   </a>
-  <a class="vis-card" href="getting-started/linux-commands/">
-    <span class="vis-card-label">Reference</span>
+  <a class="vis-card" href="connecting-to-servers/ssh-keys/">
+    <span class="vis-card-label">Connect</span>
+    <strong>SSH and Server Login</strong>
+    <p>Understand SSH and connect to servers from the lab network.</p>
+  </a>
+  <a class="vis-card" href="daily-remote-workflow/linux-commands/">
+    <span class="vis-card-label">Daily Workflow</span>
     <strong>Common Linux Commands</strong>
     <p>Review common commands for server work and daily terminal use.</p>
+  </a>
+  <a class="vis-card" href="running-experiments/tmux-and-experiments/">
+    <span class="vis-card-label">Experiments</span>
+    <strong>tmux and Running Experiments</strong>
+    <p>Run long experiments safely and follow resource guidelines.</p>
   </a>
 </div>
 
