@@ -35,37 +35,7 @@ plugins:
           nav_translations:
             Home: 首页
             Getting Started: 入门
-            What Is SSH: SSH 是什么
-            Accounts and Prerequisites: 账号与准备工作
-            First Login: 第一次登录
-            SSH Login: SSH 登录
-            Password Login: 密码登录
-            SSH Key Login: SSH Key 登录
-            SSH Config: SSH Config
-            Jump Hosts and Port Forwarding: 跳板机与端口转发
-            File Transfer: 文件传输
-            Overview: 传输方式概览
-            SCP: SCP
-            Rsync: Rsync
-            SFTP: SFTP
-            Scientific Computing and GPU: 科学计算与 GPU
-            Computing Environment Overview: 计算环境概览
-            Login Nodes and Compute Nodes: 登录节点与计算节点
-            GPU Basics: GPU 使用基础
-            Environment Management: 环境管理
-            Job Submission: 作业提交
-            Remote Workflows: 远程工作流
-            X11 Server: X11 Server
-            VS Code Remote SSH: VS Code Remote SSH
-            Jupyter and Port Forwarding: Jupyter 与端口转发
-            Policies and Security: 规范与安全
-            Usage Guidelines: 使用规范
-            Security Notes: 安全注意事项
-            Troubleshooting: 排错
-            Connection Issues: 连接问题
-            Permissions and Files: 权限与文件问题
-            GPU and Environment Issues: GPU 与环境问题
-            FAQ: FAQ
+            SSH Keys: SSH 密钥
         - locale: ja
           name: 日本語
           build: true
@@ -75,72 +45,12 @@ plugins:
           nav_translations:
             Home: ホーム
             Getting Started: はじめに
-            What Is SSH: SSH とは
-            Accounts and Prerequisites: アカウントと準備
-            First Login: 初回ログイン
-            SSH Login: SSH ログイン
-            Password Login: パスワードログイン
-            SSH Key Login: SSH キーログイン
-            SSH Config: SSH Config
-            Jump Hosts and Port Forwarding: 踏み台サーバーとポート転送
-            File Transfer: ファイル転送
-            Overview: 転送方法の概要
-            SCP: SCP
-            Rsync: Rsync
-            SFTP: SFTP
-            Scientific Computing and GPU: 科学計算と GPU
-            Computing Environment Overview: 計算環境の概要
-            Login Nodes and Compute Nodes: ログインノードと計算ノード
-            GPU Basics: GPU 利用の基礎
-            Environment Management: 環境管理
-            Job Submission: ジョブ投入
-            Remote Workflows: リモートワークフロー
-            X11 Server: X11 Server
-            VS Code Remote SSH: VS Code Remote SSH
-            Jupyter and Port Forwarding: Jupyter とポート転送
-            Policies and Security: 利用規則とセキュリティ
-            Usage Guidelines: 利用規則
-            Security Notes: セキュリティ上の注意
-            Troubleshooting: トラブルシューティング
-            Connection Issues: 接続の問題
-            Permissions and Files: 権限とファイルの問題
-            GPU and Environment Issues: GPU と環境の問題
-            FAQ: FAQ
+            SSH Keys: SSH キー
 
 nav:
   - Home: index.md
   - Getting Started:
-      - What Is SSH: getting-started/what-is-ssh.md
-      - Accounts and Prerequisites: getting-started/accounts-and-prerequisites.md
-      - First Login: getting-started/first-login.md
-  - SSH Login:
-      - Password Login: ssh/password-login.md
-      - SSH Key Login: ssh/ssh-keys.md
-      - SSH Config: ssh/ssh-config.md
-      - Jump Hosts and Port Forwarding: ssh/jump-hosts-and-tunnels.md
-  - File Transfer:
-      - Overview: file-transfer/overview.md
-      - SCP: file-transfer/scp.md
-      - Rsync: file-transfer/rsync.md
-      - SFTP: file-transfer/sftp.md
-  - Scientific Computing and GPU:
-      - Computing Environment Overview: gpu/overview.md
-      - Login Nodes and Compute Nodes: gpu/login-vs-compute-nodes.md
-      - GPU Basics: gpu/gpu-basics.md
-      - Environment Management: gpu/environment-management.md
-      - Job Submission: gpu/job-submission.md
-  - Remote Workflows:
-      - X11 Server: remote-work/x11-server.md
-      - VS Code Remote SSH: remote-work/vscode-remote-ssh.md
-      - Jupyter and Port Forwarding: remote-work/jupyter-and-port-forwarding.md
-  - Policies and Security:
-      - Usage Guidelines: policies/usage-guidelines.md
-      - Security Notes: policies/security.md
-  - Troubleshooting:
-      - Connection Issues: troubleshooting/connection.md
-      - Permissions and Files: troubleshooting/permissions-and-files.md
-      - GPU and Environment Issues: troubleshooting/gpu-and-environment.md
-      - FAQ: troubleshooting/faq.md
+      - SSH Keys: getting-started/ssh-keys.md
 
 markdown_extensions:
   - admonition
