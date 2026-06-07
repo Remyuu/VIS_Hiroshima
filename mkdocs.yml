@@ -1,0 +1,24 @@
+site_name: VIS Hiroshima
+site_url: https://remyuu.github.io/VIS_Hiroshima/
+repo_url: https://github.com/remyuu/VIS_Hiroshima
+repo_name: remyuu/VIS_Hiroshima
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
