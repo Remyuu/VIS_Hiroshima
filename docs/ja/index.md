@@ -20,6 +20,11 @@
     <strong>SSH とは何か、接続方法</strong>
     <p>SSH を理解し、研究室ネットワークからサーバーへ接続します。</p>
   </a>
+  <a class="vis-card" href="connecting-to-servers/ssh-key-pair/">
+    <span class="vis-card-label">サーバーへの接続</span>
+    <strong>SSH 公開鍵と秘密鍵</strong>
+    <p>SSH の公開鍵と秘密鍵がサーバーログイン認証で果たす役割を確認します。</p>
+  </a>
   <a class="vis-card" href="connecting-to-servers/tailscale/">
     <span class="vis-card-label">サーバーへの接続</span>
     <strong>Tailscale によるリモート接続</strong>

@@ -20,6 +20,11 @@ This documentation helps [VIS Hiroshima lab](http://vis.hiroshima-u.ac.jp/index)
     <strong>SSH and Server Login</strong>
     <p>Understand SSH and connect to servers from the lab network.</p>
   </a>
+  <a class="vis-card" href="connecting-to-servers/ssh-key-pair/">
+    <span class="vis-card-label">Connect to Servers</span>
+    <strong>SSH Public and Private Keys</strong>
+    <p>Learn the role of SSH public keys and private keys in server authentication.</p>
+  </a>
   <a class="vis-card" href="connecting-to-servers/tailscale/">
     <span class="vis-card-label">Connect to Servers</span>
     <strong>Tailscale Remote Access</strong>

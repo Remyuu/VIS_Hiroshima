@@ -57,6 +57,7 @@ plugins:
             Local Environment: 配置本机环境
             Connecting to Servers: 连接服务器
             SSH and Server Login: SSH 是什么以及如何连接
+            SSH Public and Private Keys: SSH 私钥公钥
             Tailscale Remote Access: 使用 Tailscale 远程连接
             Daily Remote Workflow: 日常远程工作流
             Common Linux Commands: 常用 Linux 命令
@@ -79,6 +80,7 @@ plugins:
             Local Environment: ローカル環境の設定
             Connecting to Servers: サーバーへの接続
             SSH and Server Login: SSH とは何か、接続方法
+            SSH Public and Private Keys: SSH 公開鍵と秘密鍵
             Tailscale Remote Access: Tailscale によるリモート接続
             Daily Remote Workflow: 日常的なリモート作業
             Common Linux Commands: よく使う Linux コマンド
@@ -96,6 +98,7 @@ nav:
       - Local Environment: before-you-connect/local-environment.md
   - Connecting to Servers:
       - SSH and Server Login: connecting-to-servers/ssh-keys.md
+      - SSH Public and Private Keys: connecting-to-servers/ssh-key-pair.md
       - Tailscale Remote Access: connecting-to-servers/tailscale.md
   - Daily Remote Workflow:
       - Common Linux Commands: daily-remote-workflow/linux-commands.md

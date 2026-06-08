@@ -20,6 +20,11 @@
     <strong>SSH 是什么以及如何连接</strong>
     <p>理解 SSH，并从实验室网络连接到服务器。</p>
   </a>
+  <a class="vis-card" href="connecting-to-servers/ssh-key-pair/">
+    <span class="vis-card-label">连接服务器</span>
+    <strong>SSH 私钥公钥</strong>
+    <p>了解 SSH 私钥和公钥在服务器登录认证中的作用。</p>
+  </a>
   <a class="vis-card" href="connecting-to-servers/tailscale/">
     <span class="vis-card-label">连接服务器</span>
     <strong> ⚠️ 使用 Tailscale 远程连接</strong>
