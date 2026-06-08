@@ -15,6 +15,7 @@ theme:
     - navigation.top
     - search.highlight
     - search.suggest
+    - content.tabs.link
   palette:
     - scheme: default
       primary: blue grey
@@ -114,6 +115,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_css:
   - assets/stylesheets/extra.css
