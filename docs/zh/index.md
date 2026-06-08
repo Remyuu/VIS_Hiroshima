@@ -4,7 +4,7 @@
   <p>面向 VIS Lab 成员的大学服务器与计算环境使用笔记。</p>
 </section>
 
-这份文档写给所有 VIS Hiroshima 实验室的同学，用于帮助大家配置本机环境、通过 SSH 连接实验室服务器，并掌握基本的服务器使用方法。
+这份文档写给所有 [VIS Hiroshima 实验室](http://vis.hiroshima-u.ac.jp/index) 的同学，用于帮助大家配置本机环境、通过 SSH 连接实验室服务器，并掌握基本的服务器使用方法。
 
 <div class="vis-card-grid">
   <a class="vis-card" href="before-you-connect/local-environment/">

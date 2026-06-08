@@ -4,7 +4,7 @@
   <p>Practical notes for VIS Lab members working with university servers and computing environments.</p>
 </section>
 
-This documentation helps VIS Hiroshima lab members prepare their local computers, connect to lab servers, and learn the basic workflow for remote experiments.
+This documentation helps [VIS Hiroshima lab](http://vis.hiroshima-u.ac.jp/index) members prepare their local computers, connect to lab servers, and learn the basic workflow for remote experiments.
 
 <div class="vis-card-grid">
   <a class="vis-card" href="before-you-connect/local-environment/">

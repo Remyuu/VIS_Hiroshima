@@ -4,7 +4,7 @@
   <p>大学のサーバーや計算環境を利用する VIS Lab メンバー向けの実践的なメモです。</p>
 </section>
 
-このドキュメントは、VIS Hiroshima のメンバーがローカル環境を準備し、研究室サーバーへ接続し、リモートで実験を進めるための基本的な流れをまとめたものです。
+このドキュメントは、[VIS Hiroshima 実験室](http://vis.hiroshima-u.ac.jp/index) のメンバーがローカル環境を準備し、研究室サーバーへ接続し、リモートで実験を進めるための基本的な流れをまとめたものです。
 
 <div class="vis-card-grid">
   <a class="vis-card" href="before-you-connect/local-environment/">
