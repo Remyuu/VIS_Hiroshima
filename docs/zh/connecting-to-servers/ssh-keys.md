@@ -59,12 +59,12 @@ ssh
 Hirakiuchi-san 会给你提供例如以下信息：
 
 ```text
-Blackwell:10.30.81.206
+Blackwell:10.30.XXX.XXX
 アカウント名：jie-zhang
 パスワード：今日の日付（8桁の数字）
 ```
 
-这里的 `10.30.81.206` 是服务器在实验室内部网络中的 IP 地址。
+这里的 `10.30.XXX.XXX` 是服务器在实验室内部网络中的 IP 地址。
 
 ## 4. 在实验室网络内连接服务器
 
@@ -79,13 +79,13 @@ ssh 用户名@服务器地址
 例如：
 
 ```bash
-ssh jie-zhang@10.30.81.206
+ssh jie-zhang@10.30.XXX.XXX
 ```
 
 第一次连接某台服务器时，SSH 可能会显示类似下面的信息：
 
 ```text
-The authenticity of host '10.30.81.206' can't be established.
+The authenticity of host '10.30.XXX.XXX' can't be established.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
@@ -98,7 +98,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 执行 SSH 命令后，终端会要求输入密码：
 
 ```text
-jie-zhang@10.30.81.206's password:
+jie-zhang@10.30.XXX.XXX's password:
 ```
 
 此时输入 Hirakiuchi-san 提供的服务器密码，然后按 Enter 键。
@@ -120,8 +120,8 @@ jie-zhang@10.30.81.206's password:
 下面展示一次完整的 SSH 登录过程：
 
 ```text
-user@DESKTOP-TRQ9UD0 C:\Users\user>ssh jie-zhang@10.30.81.206
-jie-zhang@10.30.81.206's password:
+user@DESKTOP-TRQ9UD0 C:\Users\user>ssh jie-zhang@10.30.XXX.XXX
+jie-zhang@10.30.XXX.XXX's password:
 Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-85-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -137,8 +137,8 @@ Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-85-generic x86_64)
   Temperature:           47.0 C
   Processes:             618
   Users logged in:       4
-  IPv4 address for eno1: 10.30.81.206
-  IPv6 address for eno1: 2001:2f8:1c1:c39::3e70
+  IPv4 address for eno1: 10.30.XXX.XXX
+  IPv6 address for eno1: 2001:2f8:xxx:xxx::xxxx
 
 Expanded Security Maintenance for Applicationsが無効化されています。
 
@@ -175,7 +175,7 @@ Last login: Sun Jun  7 20:40:49 2026 from 2001:2f8:1c1:c39::480d
 如果出现：
 
 ```text
-ssh: connect to host 10.30.81.206 port 22: Connection timed out
+ssh: connect to host 10.30.XXX.XXX port 22: Connection timed out
 ```
 
 表示你的电脑无法连接到服务器。一般是没有连接实验室网络、当前在家里或其他校外网络、IP 地址输入错误等等。
@@ -210,7 +210,7 @@ ssh: Could not resolve hostname ...
 
 * 不要把密码告诉其他人；
 * 不要把密码保存在公开文档中；
-* 不要在不理解命令含义时使用 `sudo` ，虽然你无法在服务器上使用，因为 Hirakiuchi-san 并没有给你这个权限。
+* 不要在不理解命令含义时使用 `sudo` 。虽然你无法在服务器上使用，因为 Hirakiuchi-san 并没有给你这个权限。
 
 后续可以进一步配置 SSH 密钥登录。使用 SSH key 后，不需要每次输入服务器密码，并且通常比只使用密码更加安全，我也会在后文介绍。
 
@@ -235,7 +235,7 @@ ssh 用户名@服务器地址
 最基本的完整操作流程如下：
 
 ```bash
-ssh jie-zhang@10.30.81.206
+ssh jie-zhang@10.30.XXX.XXX
 ```
 
 输入密码并登录成功后：

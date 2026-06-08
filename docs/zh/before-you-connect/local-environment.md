@@ -49,21 +49,21 @@ last_updated: 2026-06-08
 测试是否能访问某台服务器： 
 
 ```bash 
-ping 10.30.81.206 
+ping 10.30.XXX.XXX 
 ```
 
 通常会得到如下结果：
 
 ```
-(base) PS C:\Users\user> ping 10.30.81.206
+(base) PS C:\Users\user> ping 10.30.XXX.XXX
 
-Pinging 10.30.81.206 with 32 bytes of data:
-Reply from 10.30.81.206: bytes=32 time<1ms TTL=64
-Reply from 10.30.81.206: bytes=32 time<1ms TTL=64
-Reply from 10.30.81.206: bytes=32 time<1ms TTL=64
-Reply from 10.30.81.206: bytes=32 time=3ms TTL=64
+Pinging 10.30.XXX.XXX with 32 bytes of data:
+Reply from 10.30.XXX.XXX: bytes=32 time<1ms TTL=64
+Reply from 10.30.XXX.XXX: bytes=32 time<1ms TTL=64
+Reply from 10.30.XXX.XXX: bytes=32 time<1ms TTL=64
+Reply from 10.30.XXX.XXX: bytes=32 time=3ms TTL=64
 
-Ping statistics for 10.30.81.206:
+Ping statistics for 10.30.XXX.XXX:
     Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
 Approximate round trip times in milli-seconds:
     Minimum = 0ms, Maximum = 3ms, Average = 0ms
@@ -92,11 +92,13 @@ ssh user-name@dgx2.hu-sm-ai.hiroshima-u.ac.jp
 详细的使用手册可以查看[仲渡千宙编写的 DGX-2 手册](https://hiroshimauniv.sharepoint.com/:f:/s/Visual-teams/IgDItAZadSvkQ7sUFeK7JV3iAYh7dTPBQM_9yrcGR8eA3to?e=0zBRDM)（仅限Vis Lab成员查看）。
 
 
-## 4. 在校外使用 tailscale 访问服务器（推荐）
+## 4. 在校外使用 tailscale 访问服务器
 
-如果你在家里、宿舍、咖啡店、出差地点，或者使用手机热点，我推荐使用 tailscale 访问学校服务器资源。
+如果你在家里、宿舍、咖啡店、出差地点，或者使用手机热点，**经过管理员或者教授同意的情况下**，可以使用 tailscale 访问学校服务器资源。
 
 !!! warning "不要私自暴露服务器"
+    不要私自把实验室服务器的 SSH 端口暴露到公网，也不要未经允许配置反向隧道或端口转发。服务器是共享资源，网络访问方式应遵守实验室和学校的安全要求。
+    不要私自把实验室服务器的 SSH 端口暴露到公网，也不要未经允许配置反向隧道或端口转发。服务器是共享资源，网络访问方式应遵守实验室和学校的安全要求。
     不要私自把实验室服务器的 SSH 端口暴露到公网，也不要未经允许配置反向隧道或端口转发。服务器是共享资源，网络访问方式应遵守实验室和学校的安全要求。
 
 关于本章节的内容，我放在了 [使用 Tailscale 远程连接](../connecting-to-servers/tailscale.md) 中。

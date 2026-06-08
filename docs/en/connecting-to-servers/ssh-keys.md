@@ -59,12 +59,12 @@ Server accounts are usually provided by Hirakiuchi-san or the server administrat
 Hirakiuchi-san may provide information similar to the following:
 
 ```text
-Blackwell:10.30.81.206
+Blackwell:10.30.XXX.XXX
 Account Name: jie-zhang
 Password: Today's date (8-digit number)
 ```
 
-Here, `10.30.81.206` is the server's IP address within the laboratory network.
+Here, `10.30.XXX.XXX` is the server's IP address within the laboratory network.
 
 ## 4. Connecting to the Server from Within the Lab Network
 
@@ -79,13 +79,13 @@ ssh username@server-address
 For example:
 
 ```bash
-ssh jie-zhang@10.30.81.206
+ssh jie-zhang@10.30.XXX.XXX
 ```
 
 When connecting to a server for the first time, SSH may display a message similar to:
 
 ```text
-The authenticity of host '10.30.81.206' can't be established.
+The authenticity of host '10.30.XXX.XXX' can't be established.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
@@ -98,7 +98,7 @@ After confirmation, the server information will be stored in the local `known_ho
 After running the SSH command, the terminal will prompt you for a password:
 
 ```text
-jie-zhang@10.30.81.206's password:
+jie-zhang@10.30.XXX.XXX's password:
 ```
 
 Enter the server password provided by Hirakiuchi-san and press Enter.
@@ -122,8 +122,8 @@ Enter the server password provided by Hirakiuchi-san and press Enter.
 The following example shows a complete SSH login session:
 
 ```text
-user@DESKTOP-TRQ9UD0 C:\Users\user>ssh jie-zhang@10.30.81.206
-jie-zhang@10.30.81.206's password:
+user@DESKTOP-TRQ9UD0 C:\Users\user>ssh jie-zhang@10.30.XXX.XXX
+jie-zhang@10.30.XXX.XXX's password:
 Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-85-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -139,8 +139,8 @@ Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-85-generic x86_64)
   Temperature:           47.0 C
   Processes:             618
   Users logged in:       4
-  IPv4 address for eno1: 10.30.81.206
-  IPv6 address for eno1: 2001:2f8:1c1:c39::3e70
+  IPv4 address for eno1: 10.30.XXX.XXX
+  IPv6 address for eno1: 2001:2f8:xxx:xxx::xxxx
 
 Expanded Security Maintenance for Applications is not enabled.
 
@@ -175,7 +175,7 @@ Closing the terminal window will usually disconnect as well, but it is good prac
 If you see:
 
 ```text
-ssh: connect to host 10.30.81.206 port 22: Connection timed out
+ssh: connect to host 10.30.XXX.XXX port 22: Connection timed out
 ```
 
 your computer cannot reach the server. Common causes include not being connected to the lab network, being at home or on another external network, or entering the wrong IP address.
@@ -235,7 +235,7 @@ ssh username@server-address
 The complete minimum workflow is:
 
 ```bash
-ssh jie-zhang@10.30.81.206
+ssh jie-zhang@10.30.XXX.XXX
 ```
 
 After entering the password and logging in successfully:
