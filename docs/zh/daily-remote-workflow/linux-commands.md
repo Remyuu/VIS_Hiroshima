@@ -2,7 +2,7 @@
 title: What Is SSH
 author: Jie-Zhang(remoooo.com)
 date: 2026-06-08
-last_updated: 2026-06-08
+last_updated: 2026-06-10
 ---
 
 # 常用 Linux 命令
@@ -15,37 +15,37 @@ last_updated: 2026-06-08
 
 查看当前用户名
 
-```
+```bash
 whoami
 ```
 
 查看当前服务器主机名
 
-```
+```bash
 hostname
 ```
 
 查看当前所在目录
 
-```
+```bash
 pwd
 ```
 
 **查看当前目录下的文件**
 
-```
+```bash
 ls
 ```
 
 查看当前目录下每一项的大小
 
-```
+```bash
 du -sh *
 ```
 
 查看当前目录下每一项的大小（大小排序）
 
-```
+```bash
 du -sh -- ./* ./.??* 2>/dev/null | sort -hr
 ```
 
@@ -53,19 +53,19 @@ du -sh -- ./* ./.??* 2>/dev/null | sort -hr
 
 进入某个目录
 
-```
+```bash
 cd 目录名
 ```
 
 返回上一级目录
 
-```
+```bash
 cd ..
 ```
 
 回到自己的 home 目录
 
-```
+```bash
 cd ~
 ```
 
@@ -73,55 +73,55 @@ cd ~
 
 创建文件夹
 
-```
+```bash
 mkdir folder_name
 ```
 
 创建空文件
 
-```
+```bash
 touch file.txt
 ```
 
 复制文件夹
 
-```
+```bash
 cp -r source_folder target_folder
 ```
 
 复制文件
 
-```
+```bash
 cp source.txt target.txt
 ```
 
 移动文件
 
-```
+```bash
 mv old_path new_path
 ```
 
 重命名文件
 
-```
+```bash
 mv old_name.txt new_name.txt
 ```
 
 删除文件
 
-```
+```bash
 rm file.txt
 ```
 
 删除文件夹
 
-```
+```bash
 rm -r folder_name
 ```
 
 强制删除文件夹
 
-```
+```bash
 rm -rf folder_name
 ```
 
@@ -132,13 +132,13 @@ rm -rf folder_name
 
 查看整个文件
 
-```
+```bash
 cat file.txt
 ```
 
 **实时查看日志文件更新**
 
-```
+```bash
 tail -f log.txt
 ```
 
@@ -148,7 +148,7 @@ tail -f log.txt
 
 对新手来说，推荐先使用 [nano](https://www.nano-editor.org/dist/latest/nano.html#Introduction) 。
 
-```
+```bash
 nano file.txt
 ```
 
@@ -156,19 +156,19 @@ nano file.txt
 
 查看 CPU 型号和核心信息
 
-```
+```bash
 lscpu
 ```
 
 查看 CPU 当前使用情况
 
-```
+```bash
 top
 ```
 
 **更加直观的 CPU 当前使用情况**
 
-```
+```bash
 htop
 ```
 
@@ -179,7 +179,7 @@ htop
 
 查看内存总体情况
 
-```
+```bash
 free -h
 ```
 > 直接使用 htop 也可以直接看到。
@@ -188,7 +188,7 @@ free -h
 
 查看当前目录占用空间
 
-```
+```bash
 du -sh .
 ```
 
@@ -198,25 +198,25 @@ du -sh .
 
 **查看 GPU 状态最常用的命令是**
 
-```
+```bash
 nvidia-smi
 ```
 
 **如果想每隔 1 秒刷新一次**
 
-```
+```bash
 watch -n 1 nvidia-smi
 ```
 
 ## 10. 查看当前登录用户
 
-```
+```bash
 who
 ```
 
 查看最近登录记录
 
-```
+```bash
 last
 ```
 
@@ -224,8 +224,12 @@ last
 
 解压 .zip 文件：
 
+```bash
 unzip file.zip
+```
 
 压缩成 .zip 文件：
 
+```bash
 zip -r archive.zip folder_name
+```

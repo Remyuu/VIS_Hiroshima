@@ -2,7 +2,7 @@
 title: What Is SSH
 author: Jie-Zhang(remoooo.com)
 date: 2026-06-08
-last_updated: 2026-06-08
+last_updated: 2026-06-10
 ---
 
 # Common Linux Commands
@@ -15,37 +15,37 @@ Commands shown in **bold** are the ones that I personally use most often.
 
 Check the current username
 
-```
+```bash
 whoami
 ```
 
 Check the hostname of the current server
 
-```
+```bash
 hostname
 ```
 
 Check the current working directory
 
-```
+```bash
 pwd
 ```
 
 **List files in the current directory**
 
-```
+```bash
 ls
 ```
 
 Show the size of each item in the current directory
 
-```
+```bash
 du -sh *
 ```
 
 Show the size of each item in the current directory (sorted by size)
 
-```
+```bash
 du -sh -- ./* ./.??* 2>/dev/null | sort -hr
 ```
 
@@ -53,19 +53,19 @@ du -sh -- ./* ./.??* 2>/dev/null | sort -hr
 
 Enter a directory
 
-```
+```bash
 cd directory_name
 ```
 
 Move to the parent directory
 
-```
+```bash
 cd ..
 ```
 
 Return to your home directory
 
-```
+```bash
 cd ~
 ```
 
@@ -73,55 +73,55 @@ cd ~
 
 Create a directory
 
-```
+```bash
 mkdir folder_name
 ```
 
 Create an empty file
 
-```
+```bash
 touch file.txt
 ```
 
 Copy a directory
 
-```
+```bash
 cp -r source_folder target_folder
 ```
 
 Copy a file
 
-```
+```bash
 cp source.txt target.txt
 ```
 
 Move a file
 
-```
+```bash
 mv old_path new_path
 ```
 
 Rename a file
 
-```
+```bash
 mv old_name.txt new_name.txt
 ```
 
 Delete a file
 
-```
+```bash
 rm file.txt
 ```
 
 Delete a directory
 
-```
+```bash
 rm -r folder_name
 ```
 
 Force-delete a directory
 
-```
+```bash
 rm -rf folder_name
 ```
 
@@ -133,13 +133,13 @@ rm -rf folder_name
 
 Display the entire contents of a file
 
-```
+```bash
 cat file.txt
 ```
 
 **Monitor updates to a log file in real time**
 
-```
+```bash
 tail -f log.txt
 ```
 
@@ -149,7 +149,7 @@ Common command-line text editors on Linux servers include Nano, Vim, and Emacs. 
 
 For beginners, I recommend starting with Nano.
 
-```
+```bash
 nano file.txt
 ```
 
@@ -157,19 +157,19 @@ nano file.txt
 
 Show CPU model and core information
 
-```
+```bash
 lscpu
 ```
 
 Show current CPU usage
 
-```
+```bash
 top
 ```
 
 **A more intuitive view of CPU usage**
 
-```
+```bash
 htop
 ```
 
@@ -179,7 +179,7 @@ htop
 
 Show overall memory usage
 
-```
+```bash
 free -h
 ```
 
@@ -189,7 +189,7 @@ free -h
 
 Show the disk usage of the current directory
 
-```
+```bash
 du -sh .
 ```
 
@@ -199,25 +199,25 @@ Deep learning and graphics computing workloads typically require GPUs. This is a
 
 **The most commonly used command for checking GPU status is**
 
-```
+```bash
 nvidia-smi
 ```
 
 **To refresh the output every second**
 
-```
+```bash
 watch -n 1 nvidia-smi
 ```
 
 ## 10. View Currently Logged-in Users
 
-```
+```bash
 who
 ```
 
 Show recent login history
 
-```
+```bash
 last
 ```
 
@@ -225,12 +225,12 @@ last
 
 Extract a `.zip` file:
 
-```
+```bash
 unzip file.zip
 ```
 
 Create a `.zip` archive:
 
-```
+```bash
 zip -r archive.zip folder_name
 ```
