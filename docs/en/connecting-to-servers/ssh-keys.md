@@ -26,29 +26,29 @@ Although you type commands on your own computer, those commands are actually exe
 
 Depending on your operating system, you may need to install an SSH client, or you may already have one preinstalled.
 
-### macOS
+=== "macOS"
 
-Apple Mac computers usually come with a command-line SSH client preinstalled, so no additional installation is required. We recommend using Ghostty or the built-in Terminal application.
+    Apple Mac computers usually come with a command-line SSH client preinstalled, so no additional installation is required. We recommend using Ghostty or the built-in Terminal application.
 
-In the terminal, enter:
+    In the terminal, enter:
 
-```bash
-ssh
-```
+    ```bash
+    ssh
+    ```
 
-If SSH usage information appears on the screen, SSH is already available and working correctly.
+    If SSH usage information appears on the screen, SSH is already available and working correctly.
 
-### Windows 11
+=== "Windows"
 
-Windows 11 usually comes with the OpenSSH client preinstalled. We recommend using PowerShell. After opening PowerShell, enter:
+    Windows usually comes with the OpenSSH client preinstalled. We recommend using PowerShell. After opening PowerShell, enter:
 
-```powershell
-ssh
-```
+    ```powershell
+    ssh
+    ```
 
-If SSH command help information is displayed, the SSH client is already installed.
+    If SSH command help information is displayed, the SSH client is already installed.
 
-If the system reports that the `ssh` command cannot be found, check Windows Optional Features and verify that **OpenSSH Client** is installed.
+    If the system reports that the `ssh` command cannot be found, check Windows Optional Features and verify that **OpenSSH Client** is installed.
 
 ## 3. What You Need Before Connecting to the Server
 
