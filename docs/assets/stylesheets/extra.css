@@ -221,12 +221,25 @@
 
 @media screen and (max-width: 76.2344em) {
   .md-header {
-    background: var(--md-primary-fg-color);
-    color: var(--md-primary-bg-color);
+    background: color-mix(in srgb, var(--md-default-bg-color) 82%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
+    color: var(--md-default-fg-color);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    backdrop-filter: blur(18px) saturate(180%);
   }
 
   .md-header__button,
   .md-header__title {
-    color: var(--md-primary-bg-color);
+    color: var(--md-default-fg-color);
+  }
+
+  [data-md-color-scheme="slate"] .md-header {
+    background: color-mix(in srgb, var(--md-default-bg-color) 86%, transparent);
+    border-bottom-color: color-mix(in srgb, var(--md-default-fg-color) 12%, transparent);
+  }
+
+  [data-md-color-scheme="slate"] .md-header__button,
+  [data-md-color-scheme="slate"] .md-header__title {
+    color: var(--md-default-fg-color) !important;
   }
 }
