@@ -1,10 +1,3 @@
----
-title: What Is SSH
-author: Jie-Zhang(remoooo.com)
-date: 2026-06-08
-last_updated: 2026-06-10
----
-
 # 常用 Linux 命令
 
 本节介绍研究中最常用的一些 Linux 命令，包括查看 CPU、GPU、内存、硬盘状态，基础文件操作，进程管理，压缩解压，权限管理，以及一些容易出错的地方。

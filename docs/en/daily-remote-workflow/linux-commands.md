@@ -1,10 +1,3 @@
----
-title: What Is SSH
-author: Jie-Zhang(remoooo.com)
-date: 2026-06-08
-last_updated: 2026-06-10
----
-
 # Common Linux Commands
 
 This section introduces some of the Linux commands most commonly used in research environments, including checking CPU, GPU, memory, and disk usage; performing basic file operations; managing processes; compressing and extracting files; handling permissions; and avoiding common mistakes.

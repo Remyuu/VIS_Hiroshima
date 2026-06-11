@@ -1,10 +1,3 @@
----
-title: SSH 私钥公钥
-author: Jie-Zhang(remoooo.com)
-date: 2026-06-08
-last_updated: 2026-06-08
----
-
 # SSH 私钥公钥
 
 上一节介绍了如何使用用户名和密码登录实验室服务器。本节介绍另一种更推荐的登录方式：**SSH key 登录**。

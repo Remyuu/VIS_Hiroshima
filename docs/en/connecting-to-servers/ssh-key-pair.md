@@ -1,9 +1,3 @@
----
-title: Local Environment
-author: Jie-Zhang(remoooo.com)
-date: 2026-06-10
-last_updated: 2026-06-10
----
 !!! warning "This page is a placeholder. Content will be added later."
     This page is a placeholder. Content will be added later.
 

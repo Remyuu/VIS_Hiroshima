@@ -1,10 +1,3 @@
----
-title: What Is SSH
-author: Jie-Zhang(remoooo.com)
-date: 2026-06-07
-last_updated: 2026-06-07
----
-
 # What Is SSH
 
 Before using the VIS Hiroshima Lab Ubuntu servers, you first need to understand and use the SSH protocol, and work through a UNIX command-line interface.

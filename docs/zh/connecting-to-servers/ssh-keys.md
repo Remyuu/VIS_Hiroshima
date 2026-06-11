@@ -1,10 +1,3 @@
----
-title: What Is SSH
-author: Jie-Zhang(remoooo.com)
-date: 2026-06-07
-last_updated: 2026-06-07
----
-
 # SSH 是什么
 
 我们首先需要了解、使用 SSH 协议，并依靠 UNIX 命令行界面来进行操作 VIS Hiroshima 实验室的 Ubuntu 服务器。

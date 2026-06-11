@@ -91,6 +91,11 @@ plugins:
             Resource Guidelines: GPU / ストレージ / メモリ利用規則
             Troubleshooting: トラブルシューティング
             FAQ: FAQ
+  - git-revision-date-localized:
+      type: iso_date
+      timezone: Asia/Tokyo
+  - git-authors:
+      show_email_address: false
 
 nav:
   - Home: index.md

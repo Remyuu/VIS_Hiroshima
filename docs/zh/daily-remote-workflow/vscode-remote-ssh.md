@@ -1,10 +1,3 @@
----
-title: VS Code Remote SSH
-author: Jie-Zhang(remoooo.com)
-date: 2026-06-08
-last_updated: 2026-06-11
----
-
 # VS Code Remote SSH
 
 VS Code Remote SSH 可以让你在自己的电脑上打开 VS Code，但实际编辑、运行、查看的是服务器上的文件和终端。
