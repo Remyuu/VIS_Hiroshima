@@ -1,67 +1,71 @@
-# What Is SSH
+# What SSH Is and How to Connect
 
-Before using the VIS Hiroshima Lab Ubuntu servers, you first need to understand and use the SSH protocol, and work through a UNIX command-line interface.
+Before using the VIS Hiroshima Lab Ubuntu servers, you need to learn two things:
 
-Therefore, before getting started with the servers, you should at least learn two things:
-
-1. How to connect to a server using SSH;
+1. How to connect to a server through SSH;
 2. How to use basic Linux/UNIX commands.
+
+This section introduces what SSH does and walks through the most basic server login process. Later sections will cover SSH keys, VS Code Remote SSH, file transfer, and running long experiments.
+
+![SSH-remoooo](../../assets/images/connecting-to-servers/image0.png){ loading=lazy }
 
 ## 1. Basic Concepts of SSH
 
-SSH stands for **Secure Shell**, a set of network protocols used for remotely accessing computers. It establishes an encrypted and secure connection between two computers.
+SSH stands for **Secure Shell**, a set of network protocols used for remotely accessing computers. It can establish an encrypted connection between your computer and a remote server.
 
-The lab's Ubuntu machine acts as the server. SSH is responsible for creating a connection between your computer and the lab server. Once connected, you can browse files on the server, create and edit code, run programs, use GPU resources, download experiment results, and more.
+The lab's Ubuntu server is the server side. SSH is responsible for creating a connection between your computer and the server side. After the connection is established, you can use your own computer to view files on the server, create and edit code, run programs, use the server-side GPU resources, download experiment results, and so on.
 
-Although you type commands on your own computer, those commands are actually executed on the remote server. SSH encrypts all communication, including usernames, passwords, commands, and transferred data. Compared to unencrypted remote access methods, SSH is much more suitable for server administration and research environments.
+After logging in to the server, although you are typing commands on your own computer, those commands are actually executed on the remote server. SSH encrypts communication content, including usernames, passwords, commands, and transferred data, so it is very suitable for research and server management scenarios.
 
 ## 2. Do You Need to Install SSH Software?
 
-Depending on your operating system, you may need to install an SSH client, or you may already have one preinstalled.
+Depending on your operating system, you may already have an available SSH client.
 
 === "macOS"
 
-    Apple Mac computers usually come with a command-line SSH client preinstalled, so no additional installation is required. We recommend using Ghostty or the built-in Terminal application.
+    Mac computers usually come with a command-line SSH tool preinstalled, so no additional installation is required. We recommend using Ghostty, iTerm2, or the built-in Terminal.
 
-    In the terminal, enter:
+    After opening the terminal, enter:
 
     ```bash
-    ssh
+    ssh -V
     ```
 
-    If SSH usage information appears on the screen, SSH is already available and working correctly.
+    If SSH information appears on the screen, SSH is already available and working correctly.
 
 === "Windows"
 
-    Windows usually comes with the OpenSSH client preinstalled. We recommend using PowerShell. After opening PowerShell, enter:
+    Windows usually comes with the OpenSSH client preinstalled. We recommend using PowerShell.
+
+    After opening PowerShell, enter:
 
     ```powershell
-    ssh
+    ssh -V
     ```
 
-    If SSH command help information is displayed, the SSH client is already installed.
+    If SSH command information is displayed, the SSH client is already installed.
 
-    If the system reports that the `ssh` command cannot be found, check Windows Optional Features and verify that **OpenSSH Client** is installed.
+    If the system says that the `ssh` command cannot be found, check Windows Optional Features and confirm that **OpenSSH Client** is installed.
 
 ## 3. What You Need Before Connecting to the Server
 
-Before connecting to a lab server, you need to obtain **the username assigned by Hirakiuchi-san, the server IP address or hostname, and the corresponding password**.
+Before connecting to a lab server, you need to get **the username assigned to you by Hirakiuchi-san, the lab server's IP address or hostname, and the corresponding account password**.
 
-Server accounts are usually provided by Hirakiuchi-san or the server administrator. Do not use another student's account, and do not share your own account credentials with others.
+Server accounts are usually provided by Hirakiuchi-san or another server administrator. 
 
 Hirakiuchi-san may provide information similar to the following:
 
 ```text
 Blackwell:10.30.XXX.XXX
-Account Name: jie-zhang
-Password: Today's date (8-digit number)
+Account name: jie-zhang
+Password: today's date (8-digit number)
 ```
 
-Here, `10.30.XXX.XXX` is the server's IP address within the laboratory network.
+Here, `10.30.XXX.XXX` is the server's IP address inside the lab network.
 
 ## 4. Connecting to the Server from Within the Lab Network
 
-If your computer is connected to the laboratory's wired or wireless network, you can attempt to connect directly via SSH.
+If your computer is already connected to the lab's wired or wireless network, you can try connecting directly to the server with SSH.
 
 The basic SSH command format is:
 
@@ -75,20 +79,20 @@ For example:
 ssh jie-zhang@10.30.XXX.XXX
 ```
 
-When connecting to a server for the first time, SSH may display a message similar to:
+When connecting to a server for the first time, SSH may display a message similar to the following:
 
 ```text
 The authenticity of host '10.30.XXX.XXX' can't be established.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
-This means your computer has never connected to this server before and does not yet have its identity information stored. Simply type `yes` and press Enter.
+This means your computer has never connected to this server before, so it has not saved the server's identity information yet. Type `yes` directly and press Enter.
 
-After confirmation, the server information will be stored in the local `known_hosts` file. Future connections to the same server will usually not display this warning again.
+After confirmation, the server information will be recorded in the local `known_hosts` file. When you connect to the same server again in the future, this prompt will usually not appear again.
 
 ## 5. Entering the Password
 
-After running the SSH command, the terminal will prompt you for a password:
+After running the SSH command, the terminal will ask for a password:
 
 ```text
 jie-zhang@10.30.XXX.XXX's password:
@@ -96,23 +100,15 @@ jie-zhang@10.30.XXX.XXX's password:
 
 Enter the server password provided by Hirakiuchi-san and press Enter.
 
-> **Important: Nothing will appear on the screen while typing the password**
+> **Note: Nothing will appear on the screen while you type the password**
 >
-> When entering a password, no characters will be displayed. This is a standard security feature of command-line interfaces.
+> When entering a password in the command line, the screen will not show asterisks, dots, or password characters. This is a normal security design.
 >
-> Simply type the password normally and press Enter.
->
-> If you think you entered it incorrectly, press:
->
-> ```text
-> Ctrl + C
-> ```
->
-> to cancel the connection, then run the SSH command again.
+> Just type the password normally and press Enter. If you are worried that you typed it incorrectly, press `Ctrl + C` to cancel the current connection, then run the SSH command again.
 
-## 6. What a Successful Login Looks Like
+## 6. How to Confirm a Successful Login
 
-The following example shows a complete SSH login session:
+The following shows a complete SSH login process:
 
 ```text
 user@DESKTOP-TRQ9UD0 C:\Users\user>ssh jie-zhang@10.30.XXX.XXX
@@ -143,27 +139,29 @@ Expanded Security Maintenance for Applications is not enabled.
 Last login: Sun Jun  7 20:40:49 2026 from 2001:2f8:1c1:c39::480d
 ```
 
-From this point onward, any commands you enter will run on the lab server, not on your local computer.
+From this moment onward, the commands you enter will run on the lab server, not on your own computer.
 
-For example:
+For example, entering `pwd` shows the current directory.
 
-- `pwd` shows your current directory.
-- `ls` lists files in the current directory.
-- `whoami` displays the currently logged-in username.
-- `hostname` displays the server hostname.
-- `nvidia-smi` shows current GPU usage.
+Entering `ls` lists the files in the current directory.
+
+Entering `whoami` confirms the username you are currently logged in as.
+
+Entering `hostname` shows the current server's hostname.
+
+Entering `nvidia-smi` shows the current GPU usage.
 
 ## 7. How to Disconnect from the Server
 
-Simply type `exit` at the command line and press Enter to end the current SSH session.
+Type `exit` directly in the command line and press Enter to exit the current SSH session.
 
-Closing the terminal window will usually disconnect as well, but it is good practice to exit cleanly using `exit`.
+Closing the terminal window will usually also disconnect, but it is a good habit to exit normally with `exit`.
 
-**One important thing to note is that if you run a long-running program directly in a normal SSH session, the program may terminate when you disconnect. Long-running experiments should use a session manager such as `tmux`.**
+If you run a long-running program directly in a normal SSH window, the program may terminate together with the SSH connection when you disconnect. Long-running experiments should use `tmux`. See [tmux and Running Experiments](../running-experiments/tmux-and-experiments.md) for more information.
 
 ## 8. Common Connection Errors
 
-### Connection timed out
+### `Connection timed out`
 
 If you see:
 
@@ -171,11 +169,11 @@ If you see:
 ssh: connect to host 10.30.XXX.XXX port 22: Connection timed out
 ```
 
-your computer cannot reach the server. Common causes include not being connected to the lab network, being at home or on another external network, or entering the wrong IP address.
+it means your computer cannot connect to the server. Common causes include not being connected to the lab network, being at home or on another off-campus network, entering the wrong IP address, and so on.
 
-First, verify that your computer is connected to the lab network. If you are off-campus, use only remote-access methods approved by the university or the lab. See [Off-campus Access](off-campus-access.md) for the recommended process.
+First confirm whether you are inside the lab network. If you are off-campus, see [Off-campus Access](off-campus-access.md).
 
-### Permission denied
+### `Permission denied, please try again.`
 
 If you see:
 
@@ -183,9 +181,9 @@ If you see:
 Permission denied, please try again.
 ```
 
-the username or password is usually incorrect. If you have forgotten your password, contact Hirakiuchi-san.
+it usually means the username or password is incorrect. If you forgot your password, contact Hirakiuchi-san directly.
 
-### Could not resolve hostname
+### `Could not resolve hostname`
 
 If you see:
 
@@ -193,39 +191,32 @@ If you see:
 ssh: Could not resolve hostname ...
 ```
 
-the server address is usually incorrect. If you are using an IP address, check for missing digits or periods.
+it usually means the server address is incorrect. If you are using an IP address, check whether any digits or periods are missing.
 
 ## 9. Basic Security Considerations
 
-Your server account represents your identity on the server. All actions performed through the account may be logged, so protect your credentials carefully.
-
 Follow these principles:
 
-- Do not share your password with anyone.
-- Do not store passwords in publicly accessible documents.
-- Do not use `sudo` unless you understand exactly what a command does. In any case, you will not be able to use it on this server because Hirakiuchi-san has not granted you that permission.
+- Do not tell your password to anyone else;
+- Do not make your password public;
+- Do not use `sudo` when you do not understand what a command means. In any case, you cannot use it on the server, because Hirakiuchi-san has not given you that permission. :)
 
-Later, you can configure SSH key-based authentication. SSH keys eliminate the need to enter your password every time and are generally more secure than password-only authentication. This will also be covered in a later section.
+Later, you can configure SSH key-based login. After using an SSH key, you usually do not need to enter the server password every time, and it is more suitable for long-term use. See [SSH Public and Private Keys](ssh-key-pair.md) for the detailed steps.
 
 ## 10. What You Should Be Able to Do After This Section
 
 After completing this section, you should be able to:
 
-- Explain the basic purpose of SSH.
-- Understand the difference between a local computer and a remote server.
-- Open a terminal on macOS or Windows.
-- Connect to the lab server using:
-
-```bash
-ssh username@server-address
-```
-
-- Understand that no characters appearing while typing a password is normal behavior.
-- Determine whether you have successfully logged into an Ubuntu server.
-- Exit a server properly using `exit`.
+- Explain the basic purpose of SSH;
+- Understand the difference between a local computer and a remote server;
+- Open a terminal on macOS or Windows;
+- Connect to the lab server using `ssh username@server-address`;
+- Understand that it is normal for no characters to appear while typing a password;
+- Determine whether you have successfully logged in to an Ubuntu server;
+- Exit the server normally with `exit`;
 - Perform basic troubleshooting based on common error messages.
 
-The complete minimum workflow is:
+The most basic complete workflow is:
 
 ```bash
 ssh jie-zhang@10.30.XXX.XXX
@@ -240,7 +231,7 @@ pwd
 ls
 ```
 
-When finished, disconnect with:
+When finished, exit with:
 
 ```bash
 exit
