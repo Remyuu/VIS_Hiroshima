@@ -173,7 +173,7 @@ ssh: connect to host 10.30.XXX.XXX port 22: Connection timed out
 
 your computer cannot reach the server. Common causes include not being connected to the lab network, being at home or on another external network, or entering the wrong IP address.
 
-First, verify that your computer is connected to the lab network. If you are off-campus, you may need to use the university VPN, Tailscale, or another approved remote-access solution. I personally recommend Tailscale and will discuss it later.
+First, verify that your computer is connected to the lab network. If you are off-campus, use only remote-access methods approved by the university or the lab. See [Off-campus Access](off-campus-access.md) for the recommended process.
 
 ### Permission denied
 

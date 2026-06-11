@@ -86,13 +86,11 @@ ssh user-name@dgx2.hu-sm-ai.hiroshima-u.ac.jp
 For detailed instructions, refer to the DGX-2 manual written by [DGX-2 manual written by Chihiro Nakawatari](https://hiroshimauniv.sharepoint.com/:f:/s/Visual-teams/IgDItAZadSvkQ7sUFeK7JV3iAYh7dTPBQM_9yrcGR8eA3to?e=0zBRDM)（available only to VIS Lab members）。
 
 
-## 4. Accessing servers from off campus using Tailscale
+## 4. Accessing Servers from Off Campus
 
-If you are at home, in a café, on a business trip, or using a mobile hotspot, you may access university server resources through Tailscale **with the approval of the administrator or professor**.
+If you are at home, in a cafe, on a business trip, or using a mobile hotspot, do not assume that you can connect directly to lab servers. First confirm whether you have an access method approved by the university or the lab, such as the university VPN, Zone C VPN authorization, or another connection path explicitly provided by an administrator.
 
 !!! warning "Do not expose servers without authorization"
-    Do not expose laboratory server SSH ports to the public Internet on your own, and do not configure reverse tunnels or port forwarding without permission. The servers are shared resources, and network access methods must comply with laboratory and university security requirements.
-    Do not expose laboratory server SSH ports to the public Internet on your own, and do not configure reverse tunnels or port forwarding without permission. The servers are shared resources, and network access methods must comply with laboratory and university security requirements.
-    Do not expose laboratory server SSH ports to the public Internet on your own, and do not configure reverse tunnels or port forwarding without permission. The servers are shared resources, and network access methods must comply with laboratory and university security requirements.
+    Do not expose laboratory server SSH ports to the public Internet on your own, and do not configure reverse tunnels, port forwarding, third-party mesh networking, or remote-control tools without permission. The servers are shared resources, and network access methods must comply with laboratory and university security requirements.
 
-The contents of this section are covered in the document [Tailscale Remote Access](../connecting-to-servers/tailscale.md) .
+The contents of this section are covered in [Off-campus Access](../connecting-to-servers/off-campus-access.md).

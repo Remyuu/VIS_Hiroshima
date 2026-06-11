@@ -19,10 +19,10 @@
     <strong>SSH 公開鍵と秘密鍵</strong>
     <p>SSH の公開鍵と秘密鍵がサーバーログイン認証で果たす役割を確認します。</p>
   </a>
-  <a class="vis-card" href="connecting-to-servers/tailscale/">
+  <a class="vis-card" href="connecting-to-servers/off-campus-access/">
     <span class="vis-card-label">サーバーへの接続</span>
-    <strong>Tailscale によるリモート接続</strong>
-    <p>研究室ネットワーク外から、Tailscale を通じて利用可能なサーバー資源へアクセスします。</p>
+    <strong>学外からのサーバー接続</strong>
+    <p>研究室ネットワーク外から接続する前に、承認済みのアクセス方法を確認します。</p>
   </a>
 </div>
 

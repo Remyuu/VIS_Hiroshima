@@ -173,7 +173,7 @@ ssh: connect to host 10.30.XXX.XXX port 22: Connection timed out
 
 表示你的电脑无法连接到服务器。一般是没有连接实验室网络、当前在家里或其他校外网络、IP 地址输入错误等等。
 
-首先确认自己的电脑是否连接到实验室网络。如果在校外，需要使用学校 VPN、Tailscale 或其他经过许可的远程访问方式。我推荐使用 Tailscale 远程访问，我会在后文介绍。
+首先确认自己的电脑是否连接到实验室网络。如果在校外，需要使用学校或实验室批准的远程访问方式。具体流程请看后文的 [校外访问服务器](off-campus-access.md)。
 
 ### Permission denied
 

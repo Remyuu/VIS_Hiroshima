@@ -19,10 +19,10 @@
     <strong>SSH Public and Private Keys</strong>
     <p>Learn the role of SSH public keys and private keys in server authentication.</p>
   </a>
-  <a class="vis-card" href="connecting-to-servers/tailscale/">
+  <a class="vis-card" href="connecting-to-servers/off-campus-access/">
     <span class="vis-card-label">Connect to Servers</span>
-    <strong>Tailscale Remote Access</strong>
-    <p>Access available server resources from outside the lab network through Tailscale.</p>
+    <strong>Off-campus Access</strong>
+    <p>Confirm approved access methods before connecting to lab resources from outside the network.</p>
   </a>
 </div>
 

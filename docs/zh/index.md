@@ -19,10 +19,10 @@
     <strong>SSH 私钥公钥</strong>
     <p>了解 SSH 私钥和公钥在服务器登录认证中的作用。</p>
   </a>
-  <a class="vis-card" href="connecting-to-servers/tailscale/">
+  <a class="vis-card" href="connecting-to-servers/off-campus-access/">
     <span class="vis-card-label">连接服务器</span>
-    <strong> ⚠️ 使用 Tailscale 远程连接</strong>
-    <p>经过管理员或者教授同意的情况下，通过 Tailscale 访问可用的服务器资源。</p>
+    <strong>校外访问服务器</strong>
+    <p>从校外访问实验室资源时，确认学校或实验室批准的连接方式。</p>
   </a>
 </div>
 

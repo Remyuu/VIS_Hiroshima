@@ -72,7 +72,7 @@ plugins:
             Connecting to Servers: 连接服务器
             SSH and Server Login: SSH 是什么以及如何连接
             SSH Public and Private Keys: SSH 私钥公钥
-            Tailscale Remote Access: 使用 Tailscale 远程连接
+            Off-campus Access: 校外访问服务器
             Daily Remote Workflow: 日常远程工作流
             Common Linux Commands: 常用 Linux 命令
             VS Code Remote SSH: VS Code Remote SSH
@@ -95,7 +95,7 @@ plugins:
             Connecting to Servers: サーバーへの接続
             SSH and Server Login: SSH とは何か、接続方法
             SSH Public and Private Keys: SSH 公開鍵と秘密鍵
-            Tailscale Remote Access: Tailscale によるリモート接続
+            Off-campus Access: 学外からのサーバー接続
             Daily Remote Workflow: 日常的なリモート作業
             Common Linux Commands: よく使う Linux コマンド
             VS Code Remote SSH: VS Code Remote SSH
@@ -120,7 +120,7 @@ nav:
   - Connecting to Servers:
       - SSH and Server Login: connecting-to-servers/ssh-keys.md
       - SSH Public and Private Keys: connecting-to-servers/ssh-key-pair.md
-      - Tailscale Remote Access: connecting-to-servers/tailscale.md
+      - Off-campus Access: connecting-to-servers/off-campus-access.md
   - Daily Remote Workflow:
       - Common Linux Commands: daily-remote-workflow/linux-commands.md
       - VS Code Remote SSH: daily-remote-workflow/vscode-remote-ssh.md
@@ -138,7 +138,11 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
 
