@@ -1,12 +1,19 @@
 site_name: VIS Hiroshima
+site_description: Practical computing guide for VIS Hiroshima lab members
 site_url: https://remyuu.github.io/VIS_Hiroshima/
 repo_url: https://github.com/Remyuu/VIS_Hiroshima
 repo_name: Remyuu/VIS_Hiroshima
+edit_uri: edit/main/docs/
 
 theme:
   name: material
   language: en
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
+    - content.action.edit
+    - content.action.view
     - content.code.copy
     - navigation.footer
     - navigation.tabs
@@ -16,19 +23,26 @@ theme:
     - search.highlight
     - search.suggest
     - content.tabs.link
+    - toc.follow
   palette:
-    - scheme: default
-      primary: blue grey
-      accent: teal
+    - media: "(prefers-color-scheme)"
       toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-    - scheme: slate
-      primary: blue grey
-      accent: teal
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: purple
       toggle:
         icon: material/weather-sunny
-        name: Switch to light mode
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
   icon:
     repo: fontawesome/brands/github
 
@@ -94,8 +108,10 @@ plugins:
   - git-revision-date-localized:
       type: iso_date
       timezone: Asia/Tokyo
-  - git-authors:
-      show_email_address: false
+  - git-committers:
+      enabled: !ENV [CI, false]
+      repository: Remyuu/VIS_Hiroshima
+      branch: main
 
 nav:
   - Home: index.md
@@ -128,3 +144,6 @@ markdown_extensions:
 
 extra_css:
   - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/contributors.js

@@ -1,10 +1,4 @@
-<section class="vis-hero">
-  <p class="vis-kicker">VIS Lab Computing Guide</p>
-  <h1>VIS Hiroshima Documentation</h1>
-  <p>Practical notes for VIS Lab members working with university servers and computing environments.</p>
-</section>
-
-This documentation helps [VIS Hiroshima lab](http://vis.hiroshima-u.ac.jp/index) members prepare their local computers, connect to lab servers, and learn the basic workflow for remote experiments.
+<p class="vis-lead">Practical computing documentation for <a href="http://vis.hiroshima-u.ac.jp/index">VIS Hiroshima lab</a> members. Prepare your local computer, connect to lab servers, and learn the basic workflow for remote experiments.</p>
 
 <div class="vis-card-grid">
   <a class="vis-card" href="before-you-connect/local-environment/">
@@ -71,6 +65,10 @@ This documentation helps [VIS Hiroshima lab](http://vis.hiroshima-u.ac.jp/index)
   </a>
 </div>
 
-<section class="vis-meta">
-  <p>Maintained by <a href="https://remoooo.com">remo</a> in <a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a>.</p>
+<section class="vis-contributors" data-github-contributors data-repo="Remyuu/VIS_Hiroshima" data-limit="28" data-all-label="View all">
+  <h2>GitHub contributors</h2>
+  <p>People whose commits keep this guide useful for the lab.</p>
+  <div class="vis-contributor-list">
+    <a class="vis-contributor-link" href="https://github.com/Remyuu/VIS_Hiroshima/graphs/contributors">View all</a>
+  </div>
 </section>

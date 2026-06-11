@@ -1,10 +1,4 @@
-<section class="vis-hero">
-  <p class="vis-kicker">VIS Lab Computing Guide</p>
-  <h1>VIS Hiroshima ドキュメント</h1>
-  <p>大学のサーバーや計算環境を利用する VIS Lab メンバー向けの実践的なメモです。</p>
-</section>
-
-このドキュメントは、[VIS Hiroshima 実験室](http://vis.hiroshima-u.ac.jp/index) のメンバーがローカル環境を準備し、研究室サーバーへ接続し、リモートで実験を進めるための基本的な流れをまとめたものです。
+<p class="vis-lead"><a href="http://vis.hiroshima-u.ac.jp/index">VIS Hiroshima 実験室</a> のメンバー向けの計算環境ドキュメントです。ローカル環境を準備し、研究室サーバーへ接続し、リモートで実験を進めるための基本的な流れをまとめています。</p>
 
 <div class="vis-card-grid">
   <a class="vis-card" href="before-you-connect/local-environment/">
@@ -71,6 +65,10 @@
   </a>
 </div>
 
-<section class="vis-meta">
-  <p><a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a> の <a href="https://remoooo.com">remo</a> によって管理されています。</p>
+<section class="vis-contributors" data-github-contributors data-repo="Remyuu/VIS_Hiroshima" data-limit="28" data-all-label="すべて見る">
+  <h2>GitHub contributors</h2>
+  <p>コミットを通じて、この研究室向けガイドを継続的に整備している人たちです。</p>
+  <div class="vis-contributor-list">
+    <a class="vis-contributor-link" href="https://github.com/Remyuu/VIS_Hiroshima/graphs/contributors">すべて見る</a>
+  </div>
 </section>

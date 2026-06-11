@@ -33,6 +33,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Build site
+        env:
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ github.token }}
         run: mkdocs build --strict
 
       - name: Upload artifact

@@ -1,10 +1,4 @@
-<section class="vis-hero">
-  <p class="vis-kicker">VIS Lab Computing Guide</p>
-  <h1>VIS Hiroshima 文档</h1>
-  <p>面向 VIS Lab 成员的大学服务器与计算环境使用笔记。</p>
-</section>
-
-这份文档写给所有 [VIS Hiroshima 实验室](http://vis.hiroshima-u.ac.jp/index) 的同学，用于帮助大家配置本机环境、通过 SSH 连接实验室服务器，并掌握基本的服务器使用方法。
+<p class="vis-lead">面向 <a href="http://vis.hiroshima-u.ac.jp/index">VIS Hiroshima 实验室</a> 成员的计算环境使用文档。用于帮助大家配置本机环境、通过 SSH 连接实验室服务器，并掌握基本的远程实验工作流。</p>
 
 <div class="vis-card-grid">
   <a class="vis-card" href="before-you-connect/local-environment/">
@@ -71,6 +65,10 @@
   </a>
 </div>
 
-<section class="vis-meta">
-  <p>由 <a href="http://vis.hiroshima-u.ac.jp/">VIS Lab</a> 的 <a href="https://remoooo.com">remo</a> 维护。</p>
+<section class="vis-contributors" data-github-contributors data-repo="Remyuu/VIS_Hiroshima" data-limit="28" data-all-label="查看全部">
+  <h2>GitHub 贡献者</h2>
+  <p>通过提交持续维护这份实验室使用指南的人。</p>
+  <div class="vis-contributor-list">
+    <a class="vis-contributor-link" href="https://github.com/Remyuu/VIS_Hiroshima/graphs/contributors">查看全部</a>
+  </div>
 </section>
