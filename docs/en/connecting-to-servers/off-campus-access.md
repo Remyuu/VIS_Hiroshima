@@ -36,8 +36,8 @@ Related chapters:
 - [VS Code Remote SSH](../daily-remote-workflow/vscode-remote-ssh.md)
 - [tmux and Running Experiments](../running-experiments/tmux-and-experiments.md)
 
-## 6. References
+## References
 
 - [学内ネットワークの申請－個人管理者](https://www.media.hiroshima-u.ac.jp/services/hinet/hinetapply-person/)
-- [VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/)
+- [Hiroshima University - VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/)
 - [ネットワーク利用申請サービス](https://hinet-apply.media.hiroshima-u.ac.jp/) (campus LAN access only)

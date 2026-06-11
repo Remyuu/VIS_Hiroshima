@@ -36,8 +36,8 @@ VIS Lab のサーバーアドレスは、通常 `10.XXX.XXX.XXX` のようなプ
 - [VS Code Remote SSH](../daily-remote-workflow/vscode-remote-ssh.md)
 - [tmux と実験の実行](../running-experiments/tmux-and-experiments.md)
 
-## 6. 参考
+## 参考
 
 - [学内ネットワークの申請－個人管理者](https://www.media.hiroshima-u.ac.jp/services/hinet/hinetapply-person/)
-- [VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/)
+- [Hiroshima University - VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/)
 - [ネットワーク利用申請サービス](https://hinet-apply.media.hiroshima-u.ac.jp/) （学内 LAN からのアクセス限定）
