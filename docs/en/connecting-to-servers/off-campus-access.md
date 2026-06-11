@@ -38,6 +38,6 @@ Related chapters:
 
 ## References
 
-- [学内ネットワークの申請－個人管理者](https://www.media.hiroshima-u.ac.jp/services/hinet/hinetapply-person/)
+- [Hiroshima University - 学内ネットワークの申請－個人管理者](https://www.media.hiroshima-u.ac.jp/services/hinet/hinetapply-person/)
 - [Hiroshima University - VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/)
-- [ネットワーク利用申請サービス](https://hinet-apply.media.hiroshima-u.ac.jp/) (campus LAN access only)
+- [Hiroshima University - ネットワーク利用申請サービス](https://hinet-apply.media.hiroshima-u.ac.jp/) (campus LAN access only)

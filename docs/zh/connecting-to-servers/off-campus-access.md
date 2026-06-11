@@ -38,6 +38,6 @@ VIS Lab 服务器地址通常是 `10.XXX.XXX.XXX` 这样的内网地址。
 
 ## 参考
 
-- [学内ネットワークの申請－個人管理者](https://www.media.hiroshima-u.ac.jp/services/hinet/hinetapply-person/)
+- [Hiroshima University - 学内ネットワークの申請－個人管理者](https://www.media.hiroshima-u.ac.jp/services/hinet/hinetapply-person/)
 - [Hiroshima University - VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/)
-- [ネットワーク利用申請サービス](https://hinet-apply.media.hiroshima-u.ac.jp/) （校内局域网访问限定）
+- [Hiroshima University - ネットワーク利用申請サービス](https://hinet-apply.media.hiroshima-u.ac.jp/) （校内局域网访问限定）
