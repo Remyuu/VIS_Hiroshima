@@ -236,3 +236,9 @@ When finished, exit with:
 ```bash
 exit
 ```
+
+## References
+
+- [Princeton University - Connect by SSH](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh)
+- [Florida State University - Using SSH](https://docs.rcc.fsu.edu/ssh/)
+- [University of Michigan - Get Connected](https://documentation.its.umich.edu/node/5093)

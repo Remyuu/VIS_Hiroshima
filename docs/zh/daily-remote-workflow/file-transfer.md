@@ -363,10 +363,10 @@ sha256sum results.tar.gz
 
 ## 参考
 
-* [University of Sheffield HPC: Transferring files](https://docs.hpc.shef.ac.uk/en/latest/hpc/transferring-files.html)
-* [Stanford Sherlock: Data transfer](https://www.sherlock.stanford.edu/docs/storage/data-transfer/)
-* [UC Davis HPC: Data Transfer](https://docs.hpc.ucdavis.edu/data-transfer/)
-* [Stony Brook Research Computing: File Transfer with rsync, scp, sftp](https://rci.stonybrook.edu/HPC/docs/storage/transfer-cli)
-* [Princeton Research Computing: Data Transfer](https://researchcomputing.princeton.edu/support/knowledge-base/data-transfer)
-* [京都大学 KUDPC: SSH によるファイル転送](https://web.kudpc.kyoto-u.ac.jp/manual/ja/login/transfer)
-* [Science Tokyo TSUBAME4.0 FAQ: About file transfer](https://www.t4.cii.isct.ac.jp/docs/faq.en/general/)
+- [University of Sheffield HPC: Transferring files](https://docs.hpc.shef.ac.uk/en/latest/hpc/transferring-files.html)
+- [Stanford Sherlock: Data transfer](https://www.sherlock.stanford.edu/docs/storage/data-transfer/)
+- [UC Davis HPC: Data Transfer](https://docs.hpc.ucdavis.edu/data-transfer/)
+- [Stony Brook Research Computing: File Transfer with rsync, scp, sftp](https://rci.stonybrook.edu/HPC/docs/storage/transfer-cli)
+- [Princeton Research Computing: Data Transfer](https://researchcomputing.princeton.edu/support/knowledge-base/data-transfer)
+- [京都大学 KUDPC: SSH によるファイル転送](https://web.kudpc.kyoto-u.ac.jp/manual/ja/login/transfer)
+- [Science Tokyo TSUBAME4.0 FAQ: About file transfer](https://www.t4.cii.isct.ac.jp/docs/faq.en/general/)

@@ -98,4 +98,4 @@ ssh user-name@dgx2.hu-sm-ai.hiroshima-u.ac.jp
 
 - [Hiroshima University - VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/)
 - [The University of St Andrews - Connecting to the HPC](https://www.st-andrews.ac.uk/high-performance-computing/help-and-contact/connecting/)
--[Princeton University - Connect by SSH](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh)
+- [Princeton University - Connect by SSH](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh)
