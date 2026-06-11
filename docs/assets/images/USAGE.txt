@@ -1,0 +1,49 @@
+Image Assets
+============
+
+Shared images for all language versions live in this directory.
+
+Directory layout
+----------------
+
+- before-you-connect/ - images for local setup, VPN, and network access pages.
+- connecting-to-servers/ - images for SSH, keys, login, and remote access pages.
+- daily-remote-workflow/ - images for common commands, VS Code Remote SSH, and file transfer pages.
+- running-experiments/ - images for tmux, experiment execution, and resource usage pages.
+- troubleshooting/ - images for FAQ and troubleshooting pages.
+
+Naming
+------
+
+Use lowercase kebab-case names:
+
+  zonec-vpn-selection.png
+  ssh-keygen-terminal.png
+  vscode-remote-ssh-connect.png
+
+When an image is language-specific, add the locale before the extension:
+
+  vscode-remote-ssh-connect.en.png
+  vscode-remote-ssh-connect.zh.png
+  vscode-remote-ssh-connect.ja.png
+
+Markdown references
+-------------------
+
+Reference images with relative paths from each Markdown file. For example, from
+docs/en/before-you-connect/local-environment.md:
+
+```md
+![Zone C VPN selection screen](../../assets/images/before-you-connect/zonec-vpn-selection.png){ loading=lazy }
+```
+
+or
+
+```md
+<figure markdown="span">
+  ![VS Code Remote SSH](https://code.visualstudio.com/assets/docs/remote/remote-overview/architecture.png){ loading=lazy }
+  <figcaption>VS Code Remote SSH</figcaption>
+</figure>
+```
+
+Use translated alt text in each language page, even when the image file is shared.
