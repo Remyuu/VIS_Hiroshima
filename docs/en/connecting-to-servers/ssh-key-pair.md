@@ -1,36 +1,44 @@
-!!! warning "This page is a placeholder. Content will be added later."
-    This page is a placeholder. Content will be added later.
+# SSH Public and Private Keys
 
-# SSH 私钥公钥
+The previous page showed how to log in to a lab server with a username and password. This page introduces a better way for daily use: **SSH key login**.
 
-上一节介绍了如何使用用户名和密码登录实验室服务器。本节介绍另一种更推荐的登录方式：**SSH key 登录**。
+With SSH keys, your computer keeps a private key, and the server keeps the matching public key. When you log in, SSH uses this key pair to verify your identity. Once it is set up, you usually do not need to type the server password every time. It also works nicely with VS Code Remote SSH, SFTP, `scp`, `rsync`, and similar tools.
 
-使用 SSH key 后，你的电脑会保存一个私钥，服务器会保存与之对应的公钥。登录时，SSH 会用这对密钥完成身份验证。配置成功后，你通常不需要每次输入服务器密码，也更适合配合 VS Code Remote SSH、SFTP、`scp`、`rsync` 等工具使用。
+The overall flow is:
 
-## 1. 私钥和公钥是什么
+1. Generate an SSH key pair on your own computer;
+2. Put the public key into `authorized_keys` on the server account;
+3. Use the private key from your own computer to log in.
 
-SSH key pair 由两个文件组成：
+<figure markdown="span">
+  ![keep-your-password-private](../../assets/images/connecting-to-servers/image1.png){ loading=lazy, width="60%" }
+  <figcaption>keep-your-password-private</figcaption>
+</figure>
 
-| 文件 | 通常位置 | 作用 |
+## 1. What Are Public and Private Keys?
+
+An SSH key pair has two files:
+
+| File | Usual location | What it does |
 | --- | --- | --- |
-| 私钥 | `~/.ssh/id_ed25519` | 只保存在自己的电脑上，用来证明“我是这个账号的使用者”。 |
-| 公钥 | `~/.ssh/id_ed25519.pub` | 可以放到服务器上，用来允许对应私钥登录。 |
+| Private key | `~/.ssh/id_ed25519` | Stays only on your own computer. It proves "I am the user of this account." |
+| Public key | `~/.ssh/id_ed25519.pub` | Goes on the server. It allows the matching private key to log in. |
 
-可以把它理解成：
+You can think of it like this:
 
-* **私钥** 是只属于你自己的钥匙，不能发给别人；
-* **公钥** 是可以交给服务器管理员或放进服务器账号中的“锁孔信息”；
-* 服务器只需要保存公钥，不需要知道你的私钥内容。
+- The **private key** is your own key. Do not send it to anyone;
+- The **public key** is like lock information that you can give to the server administrator or put in your server account;
+- The server only needs the public key. It does not need to know your private key.
 
-!!! warning "不要泄露私钥"
+!!! warning "Do not leak your private key"
 
-    不要把 `id_ed25519`、`id_rsa` 这类没有 `.pub` 后缀的文件发给任何人，也不要上传到 GitHub、Notion、Google Drive 共享链接、Slack、Teams、Line 或公开文档中。
+    Do not send files such as `id_ed25519`, `id_ed25519_vis`, or `id_rsa` to anyone if they do not have the `.pub` suffix. Also do not upload them to GitHub, Notion, Google Drive shared links, Slack, Teams, Line, or public documents.
 
-    可以分享的是带有 `.pub` 后缀的公钥文件。
+    The file you can share is the public key file with the `.pub` suffix, such as `id_ed25519_vis.pub`.
 
-## 2. 先检查自己是否已经有 SSH key
+## 2. Check Whether You Already Have an SSH Key
 
-在本机终端中执行：
+Run this in your local terminal:
 
 === "macOS / Linux"
 
@@ -44,29 +52,29 @@ SSH key pair 由两个文件组成：
     dir $env:USERPROFILE\.ssh
     ```
 
-如果看到下面这些文件，说明你的电脑上可能已经有 SSH key：
+If you see files like these, your computer may already have an SSH key:
 
 ```text
 id_ed25519
 id_ed25519.pub
 ```
 
-或者：
+Or:
 
 ```text
 id_rsa
 id_rsa.pub
 ```
 
-其中没有 `.pub` 后缀的是私钥，有 `.pub` 后缀的是公钥。
+The file without `.pub` is the private key. The file with `.pub` is the public key.
 
-如果你不确定这些 key 是做什么用的，建议先不要删除。为实验室服务器重新再生成一组新的 key 吧。
+If you are not sure what those keys are used for, do not delete them yet. For the lab server, it is fine to generate a new key pair.
 
-## 3. 生成新的 SSH key
+## 3. Generate a New SSH Key
 
-推荐使用 Ed25519 类型的 key。它比较新，安全性和性能都很好，命令也很简洁。
+I recommend using an Ed25519 key. It is newer, secure, fast, and the command is simple.
 
-在本机终端中执行：
+Run this in your local terminal:
 
 === "macOS / Linux"
 
@@ -80,40 +88,41 @@ id_rsa.pub
     ssh-keygen -t ed25519 -f "$env:USERPROFILE\.ssh\id_ed25519_vis" -C "your-name@vis-hiroshima"
     ```
 
-这里的参数含义是：
+Here is what the options mean:
 
-| 参数 | 含义 |
+| Option | Meaning |
 | --- | --- |
-| `-t ed25519` | 生成 Ed25519 类型的密钥。 |
-| `-f ~/.ssh/id_ed25519_vis` | 指定生成的私钥文件位置和文件名。 |
-| `-C "your-name@vis-hiroshima"` | 给 key 添加备注，方便以后识别。 |
+| `-t ed25519` | Generate an Ed25519 key. |
+| `-f ~/.ssh/id_ed25519_vis` | Set the private key path and file name. |
+| `-C "your-name@vis-hiroshima"` | Add a comment to the key so it is easier to recognize later. |
 
-执行后会看到类似提示：
+After running the command, you will see prompts like:
 
 ```text
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 ```
 
-这里可以设置一个 passphrase，用来给私钥再加一层保护。
+Here you can set a passphrase to add one more layer of protection to the private key. The passphrase is not the server password. It protects the private key itself.
 
-* 如果设置 passphrase，以后使用这把私钥时可能需要输入一次 passphrase；
-* 如果直接按 Enter 留空，使用起来更方便，但本机私钥文件一定要保管好。
+- If you set a passphrase, you may need to type it once when using this private key;
+- If you just press Enter and leave it empty, it is more convenient, but you must take good care of the private key file;
+- If you forget the passphrase later, it usually cannot be recovered. You will need to generate a new key.
 
-对于刚开始使用服务器的同学，如果还不熟悉 SSH agent，可以先留空；等工作流稳定后，再考虑给 key 设置 passphrase。
+If you are just getting started and are not familiar with SSH agent yet, leaving it empty is okay. After your workflow becomes stable, you can consider adding a passphrase.
 
-生成完成后，本机会出现两个文件：
+After generation, you will have two files:
 
 ```text
 ~/.ssh/id_ed25519_vis
 ~/.ssh/id_ed25519_vis.pub
 ```
 
-第一个是私钥，第二个是公钥。
+The first one is the private key. The second one is the public key.
 
-## 4. 查看公钥内容
+## 4. View and Copy the Public Key
 
-把公钥加入服务器之前，需要先查看公钥内容。
+Before adding the public key to the server, you need to view its content.
 
 === "macOS / Linux"
 
@@ -127,76 +136,91 @@ Enter same passphrase again:
     Get-Content "$env:USERPROFILE\.ssh\id_ed25519_vis.pub"
     ```
 
-公钥看起来类似下面这样：
+The public key looks something like this:
 
 ```text
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHx5dbGOMRblFApD+C2YcA2y5LL8Bm8n/OjytGGWwCcU your-name@vis-hiroshima
 ```
 
-一条公钥通常只有一行，由三部分组成：
+A public key is usually one single line with three parts:
 
 ```text
-密钥类型 密钥内容 备注
+key-type key-content comment
 ```
 
-复制公钥时，要复制完整一整行。不要只复制中间的一部分，也不要额外换行。
+When copying the public key, copy the entire line. Do not copy only the middle part, and do not add extra line breaks.
 
-## 5. 把公钥加入服务器
+## 5. Add the Public Key to the Server
 
-SSH key 登录能否成功，取决于服务器端是否把你的公钥加入了自己的账号。
+Whether SSH key login works depends on whether the server has your public key in your account.
 
-服务器端保存公钥的位置通常是：
+On the server, public keys are usually stored here:
 
 ```text
 ~/.ssh/authorized_keys
 ```
 
-也就是说，对服务器上的用户 `jie-zhang` 来说，文件位置通常是：
+For example, for the server user `jie-zhang`, the full path is usually:
 
 ```text
 /home/jie-zhang/.ssh/authorized_keys
 ```
 
-在本机执行下面的命令，把公钥追加到服务器端的 `authorized_keys`。
+Run the following command on your own computer to append the public key to the server's `authorized_keys`.
 
 === "macOS / Linux"
 
     ```bash
-    cat ~/.ssh/id_ed25519_vis.pub | ssh jie-zhang@10.30.XXX.XXX 'mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys'
+    cat ~/.ssh/id_ed25519_vis.pub | ssh jie-zhang@10.30.XXX.XXX 'mkdir -p ~/.ssh && chmod 700 ~/.ssh && touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && cat >> ~/.ssh/authorized_keys'
     ```
 
 === "Windows PowerShell"
 
     ```powershell
-    Get-Content "$env:USERPROFILE\.ssh\id_ed25519_vis.pub" | ssh jie-zhang@10.30.XXX.XXX "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+    Get-Content "$env:USERPROFILE\.ssh\id_ed25519_vis.pub" | ssh jie-zhang@10.30.XXX.XXX "mkdir -p ~/.ssh && chmod 700 ~/.ssh && touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && cat >> ~/.ssh/authorized_keys"
     ```
 
-这里的 `10.30.XXX.XXX` 需要替换成实际服务器 IP 地址。
+Replace `10.30.XXX.XXX` with the actual server IP address, and replace `jie-zhang` with your own server username.
 
-执行这条命令时，服务器可能会要求你输入一次密码。这是正常的，因为此时 key 还没有配置完成。
+The server may ask for your server password when you run this command. That is normal, because the key setup is not finished yet.
 
-命令中做了几件事：
+The command does a few things:
 
-| 命令片段 | 作用 |
+| Command part | What it does |
 | --- | --- |
-| `mkdir -p ~/.ssh` | 在服务器账号下创建 `.ssh` 目录。 |
-| `chmod 700 ~/.ssh` | 让 `.ssh` 目录只有自己可以访问。 |
-| `cat >> ~/.ssh/authorized_keys` | 把本机公钥追加到服务器的 `authorized_keys`。 |
-| `chmod 600 ~/.ssh/authorized_keys` | 让 `authorized_keys` 只有自己可以读写。 |
+| `mkdir -p ~/.ssh` | Creates the `.ssh` directory under your server account. |
+| `chmod 700 ~/.ssh` | Makes the `.ssh` directory accessible only by you. |
+| `touch ~/.ssh/authorized_keys` | Creates `authorized_keys` if it does not exist. |
+| `chmod 600 ~/.ssh/authorized_keys` | Makes `authorized_keys` readable and writable only by you. |
+| `cat >> ~/.ssh/authorized_keys` | Appends your local public key to the server's `authorized_keys`. |
 
-## 6. 测试 SSH key 登录
+!!! note "Do not append the same public key again and again"
 
-公钥加入服务器后，在本机执行：
+    Duplicate public keys usually do not break login immediately, but they make `authorized_keys` messy. It is better to confirm that you copied the correct public key, then run the command once.
 
-```bash
-ssh -i ~/.ssh/id_ed25519_vis jie-zhang@10.30.XXX.XXX
-```
+    If you already added the same key multiple times, log in to the server, edit `~/.ssh/authorized_keys`, and keep only one copy of that line.
 
-如果可以直接登录，说明 SSH key 配置成功。
+## 6. Test SSH Key Login
 
-如果仍然要求输入服务器密码，可能是 `authorized_keys` 文件权限不正确。请看本章的第8节。
+After adding the public key to the server, run this on your own computer:
 
-登录成功后，可以用下面的命令确认自己在服务器上：
+=== "macOS / Linux"
+
+    ```bash
+    ssh -i ~/.ssh/id_ed25519_vis jie-zhang@10.30.XXX.XXX
+    ```
+
+=== "Windows PowerShell"
+
+    ```powershell
+    ssh -i "$env:USERPROFILE\.ssh\id_ed25519_vis" jie-zhang@10.30.XXX.XXX
+    ```
+
+If you can log in directly, SSH key login is working.
+
+If you set a passphrase, the terminal may ask you for that passphrase. This is not the server password. It is the password protecting your private key. If SSH still asks for the server password, the permissions of `authorized_keys` may be wrong. See section 8 for details.
+
+After logging in, you can confirm that you are on the server with:
 
 ```bash
 whoami
@@ -204,15 +228,15 @@ hostname
 pwd
 ```
 
-## 7. 使用 SSH config 简化命令
+## 7. Use SSH Config to Shorten the Command
 
-如果每次都输入：
+Typing this every time is a bit annoying:
 
 ```bash
 ssh -i ~/.ssh/id_ed25519_vis jie-zhang@10.30.XXX.XXX
 ```
 
-会比较麻烦。可以在本机创建或编辑 SSH config 文件。
+You can create or edit your local SSH config file.
 
 === "macOS / Linux"
 
@@ -226,7 +250,7 @@ ssh -i ~/.ssh/id_ed25519_vis jie-zhang@10.30.XXX.XXX
     notepad $env:USERPROFILE\.ssh\config
     ```
 
-加入下面的内容：
+Add this:
 
 ```sshconfig
 Host vis-server
@@ -235,26 +259,34 @@ Host vis-server
     IdentityFile ~/.ssh/id_ed25519_vis
 ```
 
-保存后，就可以直接使用：
+After saving it, you can connect with:
 
 ```bash
 ssh vis-server
 ```
 
-这个别名也可以被其他工具使用，例如：
+This alias can also be used by other tools, for example:
 
 ```bash
 scp local-file.txt vis-server:~/
 sftp vis-server
 ```
 
-VS Code Remote SSH 也会读取这个配置文件。因此，配置好 `~/.ssh/config` 后，后续连接会方便很多。
+VS Code Remote SSH also reads this config file. So after setting up `~/.ssh/config`, later connections become much easier.
 
-## 8. 权限设置
+!!! tip "Windows path"
 
-SSH 对权限比较敏感。如果权限太开放，它可能会拒绝使用对应文件。
+    Windows OpenSSH can usually understand `~/.ssh/id_ed25519_vis`. If it does not work in your environment, use the full path instead:
 
-本机建议权限如下：
+    ```sshconfig
+    IdentityFile C:/Users/your-name/.ssh/id_ed25519_vis
+    ```
+
+## 8. Permissions
+
+SSH is quite strict about file permissions. If permissions are too open, SSH may refuse to use the file.
+
+Recommended local permissions:
 
 ```bash
 chmod 700 ~/.ssh
@@ -263,77 +295,83 @@ chmod 644 ~/.ssh/id_ed25519_vis.pub
 chmod 600 ~/.ssh/config
 ```
 
-服务器端建议权限如下：
+Recommended server-side permissions:
 
 ```bash
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 ```
 
-如果出现下面的错误：
+If you see this error:
 
 ```text
 WARNING: UNPROTECTED PRIVATE KEY FILE!
 ```
 
-通常表示私钥权限太开放。可以在本机执行：
+it usually means the private key permissions are too open. Run this locally:
 
 ```bash
 chmod 600 ~/.ssh/id_ed25519_vis
 ```
 
-Windows 上一般不需要手动执行 `chmod`。如果 Windows 的 OpenSSH 提示私钥权限问题，可以先确认私钥是否放在当前用户自己的 `.ssh` 目录下。
+On Windows, you usually do not need to run `chmod` manually. If Windows OpenSSH complains about private key permissions, first check that the private key is inside your own user's `.ssh` directory.
 
-## 9. 常见问题
+## 9. Common Issues
 
-### Permission denied (publickey)
+### `Permission denied (publickey)`
 
-如果出现：
+If you see:
 
 ```text
 Permission denied (publickey).
 ```
 
-说明服务器没有接受你的 SSH key。着重检查服务器端 `.ssh` 和 `authorized_keys` 权限是否正确。
+it means the server did not accept your SSH key. Focus on checking the server-side `.ssh` and `authorized_keys` permissions.
 
-可以加上 `-v` 查看更详细的调试信息：
+You can add `-v` to see more debugging information:
 
 ```bash
 ssh -v -i ~/.ssh/id_ed25519_vis jie-zhang@10.30.XXX.XXX
 ```
 
-输出内容会很多，但可以重点看是否出现类似：
+The output will be long, but look for lines like:
 
 ```text
 Offering public key: ...
 Server accepts key: ...
 ```
 
-### 忘记 passphrase
+### Forgot the passphrase
 
-如果忘记私钥的 passphrase，通常无法恢复。
+If you forget the private key passphrase, it usually cannot be recovered.
 
-处理方法是生成一组新的 SSH key，然后把新的公钥加入服务器的 `authorized_keys`。如果旧 key 已经不再使用，也应该从服务器端 `authorized_keys` 中删除旧公钥。
+The usual fix is to generate a new SSH key pair, then add the new public key to the server's `authorized_keys`. If the old key is no longer used, you should also remove the old public key from `authorized_keys` on the server.
 
-### 私钥泄露了怎么办
+### What if the private key leaks?
 
-如果你不小心把私钥发给别人，或者上传到了公开仓库，应立即停止使用这组 key。
+If you accidentally send your private key to someone else, or upload it to a public repository, stop using that key immediately.
 
-建议处理流程：
+Recommended steps:
 
-1. 在服务器端 `~/.ssh/authorized_keys` 中删除对应公钥；
-2. 在本机删除泄露的私钥和公钥；
-3. 重新生成一组新的 SSH key；
-4. 把新的公钥加入服务器；
-5. 如果泄露发生在 GitHub 仓库中，还需要从 Git 历史中彻底移除，并通知相关管理员。
+1. Delete the matching public key from `~/.ssh/authorized_keys` on the server;
+2. Delete the leaked private key and public key from your own computer;
+3. Generate a new SSH key pair;
+4. Add the new public key to the server;
+5. If the leak happened in a GitHub repository, remove it completely from Git history and notify the relevant administrator.
 
-只删除 GitHub 当前页面上的文件通常不够，因为旧版本历史中可能仍然能看到私钥。
+Deleting the file only from the current GitHub page is usually not enough, because the private key may still be visible in older commit history.
 
-## 10. 推荐习惯
+## 10. Good Habits
 
-建议遵守下面几条习惯：
+I recommend these habits:
 
-* 每台自己的电脑使用一组独立的 SSH key；
-* 私钥只保存在本机，不通过聊天软件、邮件或云盘分享；
-* 公钥可以交给服务器管理员；
-* 不再使用某台电脑时，从服务器 `authorized_keys` 删除对应公钥。
+- Use a separate SSH key pair for each computer you own;
+- Keep private keys only on your own computer. Do not share them through chat apps, email, or cloud drives;
+- Public keys can be given to the server administrator;
+- When you stop using a computer, remove its public key from the server's `authorized_keys`.
+
+## References
+
+- [The Hong Kong University - Login to HPC Cluster Without Using Password](https://hkust-hpc-docs.readthedocs.io/latest/kb/ssh/ssh-login-to-hpc-cluster-without-usi-ImiEj9.html)
+- [University of California Berkeley - SSH Keys](https://statistics.berkeley.edu/computing/ssh-keys)
+- [University of Arizona - System Access](https://hpcdocs.hpc.arizona.edu/registration_and_access/system_access/)

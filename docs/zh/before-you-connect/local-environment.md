@@ -8,6 +8,10 @@
 2. 理解自己当前的网络环境；
 3. 知道在实验室、校园 VPN 和校外网络下分别应该怎么处理。
 
+<figure markdown="span">
+  ![readme](../../assets/images/before-you-connect/image1.jpeg){ loading=lazy, width="60%" }
+</figure>
+
 ## 1. 配置合适的终端
 
 === "macOS"

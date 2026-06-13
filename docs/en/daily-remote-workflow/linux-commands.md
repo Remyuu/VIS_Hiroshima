@@ -1,218 +1,250 @@
 # Common Linux Commands
 
-This section introduces some of the Linux commands most commonly used in research environments, including checking CPU, GPU, memory, and disk usage; performing basic file operations; managing processes; compressing and extracting files; handling permissions; and avoiding common mistakes.
+This page collects some Linux commands you will use often on VIS Lab servers.
 
-Commands shown in **bold** are the ones that I personally use most often.
+<figure markdown="span">
+  ![sudo rm -rf /](../../assets/images/daily-remote-workflow/gif0.gif){ loading=lazy }
+  <figcaption>sudo rm -rf</figcaption>
+</figure>
 
-## 1. Check Your Current Identity and Location
+## 1. Check Where You Are
 
-Check the current username
+Right after logging in to a server, it is a good idea to confirm your user, server, and current directory.
+
+| Command | What it does |
+| --- | --- |
+| `whoami` | Shows your login username. |
+| `hostname` | Shows the server hostname. |
+| `pwd` | Shows the current directory. |
+| `ls` | Lists files in the directory. |
+| `ls -lh` | Shows file sizes. |
+| `ls -la` | Also shows hidden files. |
+| `history` | Shows recently used commands. |
+
+A common check after login:
 
 ```bash
 whoami
-```
-
-Check the hostname of the current server
-
-```bash
 hostname
-```
-
-Check the current working directory
-
-```bash
 pwd
+ls -lh
 ```
 
-**List files in the current directory**
+## 2. Move Between Directories
+
+| Command | What it does |
+| --- | --- |
+| `cd folder_name` | Enter a directory. |
+| `cd ..` | Go up one level. |
+| `cd ~` | Go back to your home directory. |
+| `cd -` | Go back to the previous directory. |
+| `cd /absolute/path` | Enter an absolute path. |
+
+If a path has spaces, wrap it in quotes:
 
 ```bash
-ls
+cd "folder with spaces"
 ```
 
-Show the size of each item in the current directory
+## 3. Basic File and Folder Operations
 
-```bash
-du -sh *
-```
+| Command | What it does |
+| --- | --- |
+| `mkdir folder_name` | Create a folder. |
+| `mkdir -p path/to/folder` | Create nested folders; missing parent folders are created too. |
+| `touch file.txt` | Create an empty file, or update its timestamp. |
+| `cp source.txt target.txt` | Copy a file. |
+| `cp -r source_folder target_folder` | Copy a folder. |
+| `mv old_path new_path` | Move a file or folder. |
+| `mv old_name.txt new_name.txt` | Rename a file. |
+| `rm file.txt` | Delete a file. |
+| `rm -r folder_name` | Delete a folder. |
 
-Show the size of each item in the current directory (sorted by size)
+!!! danger "`rm` usually cannot be undone"
 
-```bash
-du -sh -- ./* ./.??* 2>/dev/null | sort -hr
-```
+    `rm` does not move files to the trash. Before running it, at least run:
 
-## 2. Navigate Directories
+    ```bash
+    pwd
+    ls -lh
+    ```
 
-Enter a directory
+    Confirm which directory you are in and what you are about to delete.
 
-```bash
-cd directory_name
-```
+    Be especially careful with commands like:
 
-Move to the parent directory
+    ```bash
+    rm -rf folder_name
+    rm -rf *
+    ```
 
-```bash
-cd ..
-```
+    On a shared server, do not run `rm -rf` if you do not understand the path, and do not delete other people's directories.
 
-Return to your home directory
-
-```bash
-cd ~
-```
-
-## 3. Basic File and Directory Operations
-
-Create a directory
-
-```bash
-mkdir folder_name
-```
-
-Create an empty file
-
-```bash
-touch file.txt
-```
-
-Copy a directory
-
-```bash
-cp -r source_folder target_folder
-```
-
-Copy a file
-
-```bash
-cp source.txt target.txt
-```
-
-Move a file
-
-```bash
-mv old_path new_path
-```
-
-Rename a file
-
-```bash
-mv old_name.txt new_name.txt
-```
-
-Delete a file
-
-```bash
-rm file.txt
-```
-
-Delete a directory
-
-```bash
-rm -r folder_name
-```
-
-Force-delete a directory
-
-```bash
-rm -rf folder_name
-```
-
-> `rm -rf` is extremely dangerous (:
->
-> Before running it, always use `pwd` and `ls` to confirm which directory you are in and what files you are about to delete.
+    <figure markdown="span">
+        ![sudo rm -rf /](../../assets/images/daily-remote-workflow/image6.png){ loading=lazy }
+        <figcaption>linux-directory-structure</figcaption>
+    </figure>
 
 ## 4. View File Contents
 
-Display the entire contents of a file
+| Command | What it does |
+| --- | --- |
+| `cat file.txt` | Print the whole file at once. Good for small files. |
+| `less file.txt` | View a file page by page. Good for large files; press `q` to quit. |
+| `head file.txt` | Show the beginning of a file. |
+| `head -n 20 file.txt` | Show the first 20 lines. |
+| `tail file.txt` | Show the end of a file. |
+| `tail -n 50 file.txt` | Show the last 50 lines. |
+| `tail -f log.txt` | Watch log updates in real time. |
+
+When training models, checking logs is very common:
 
 ```bash
-cat file.txt
+tail -f train.log
 ```
 
-**Monitor updates to a log file in real time**
+Press `Ctrl + C` to leave `tail -f`.
+
+## 5. Search Files and Text
+
+Find Python files under the current directory:
 
 ```bash
-tail -f log.txt
+find . -name "*.py"
 ```
 
-## 5. Edit Text Files
+Find files whose names contain `config`:
 
-Common command-line text editors on Linux servers include Nano, Vim, and Emacs. If you are completely unfamiliar with terminal-based editors, I recommend using VS Code directly.
+```bash
+find . -iname "*config*"
+```
 
-For beginners, I recommend starting with Nano.
+Search text under the current directory:
+
+```bash
+grep -R "learning_rate" .
+```
+
+Search only in Python files:
+
+```bash
+grep -R "learning_rate" --include="*.py" .
+```
+
+If `rg` is installed on the server, you can also use ripgrep. It is usually faster:
+
+```bash
+rg "learning_rate"
+```
+
+## 6. Edit Text Files
+
+Common command-line text editors on servers include `nano`, `vim`, and `emacs`. If you are not familiar with terminal editors at all, I recommend using VS Code Remote SSH first.
+
+For beginners, `nano` is the easiest one to start with:
 
 ```bash
 nano file.txt
 ```
 
-## 6. View CPU Information
+In `nano`:
 
-Show CPU model and core information
+| Action | Shortcut |
+| --- | --- |
+| Save | `Ctrl + O`, then press Enter |
+| Exit | `Ctrl + X` |
+| Cancel current action | `Ctrl + C` |
 
-```bash
-lscpu
-```
+## 7. Check Disk and Directory Usage
 
-Show current CPU usage
-
-```bash
-top
-```
-
-**A more intuitive view of CPU usage**
+Check server disk partition usage:
 
 ```bash
-htop
+df -h
 ```
 
-> `htop` displays the utilization of each CPU core, memory usage, and a list of running processes. However, I am not sure whether Hirakiuchi-san has installed it on every machine.
-
-## 7. Check Memory Usage
-
-Show overall memory usage
-
-```bash
-free -h
-```
-
-> You can also view memory usage directly in `htop`.
-
-## 8. Check Disk and Directory Usage
-
-Show the disk usage of the current directory
+Check the size of the current directory:
 
 ```bash
 du -sh .
 ```
 
-## 9. Monitor GPU Usage
+Check the size of each item in the current directory:
 
-Deep learning and graphics computing workloads typically require GPUs. This is arguably the most important command in this guide. Before starting a training job, always make sure you are not occupying GPU resources that someone else is using.
+```bash
+du -sh *
+```
 
-**The most commonly used command for checking GPU status is**
+Show current directory contents sorted by size:
+
+```bash
+du -sh -- ./* ./.??* 2>/dev/null | sort -hr
+```
+
+## 8. Check CPU, Memory, and Processes
+
+| Command | What it does |
+| --- | --- |
+| `lscpu` | Shows CPU model and core information. |
+| `top` | Shows current CPU, memory, and process usage. |
+| `htop` | A more visual CPU, memory, and process view; it may not be installed on every server. |
+| `free -h` | Shows overall memory usage. |
+| `ps -u $USER` | Shows processes currently running under your user. |
+| `ps aux` | Shows the process list on the system. |
+
+Search by process name:
+
+```bash
+ps aux | grep python
+```
+
+View details for one process:
+
+```bash
+ps -fp PID
+```
+
+Replace `PID` with the actual process ID.
+
+Stop a process you started:
+
+```bash
+kill PID
+```
+
+If normal `kill` does not work, and you have confirmed the process is yours and should be stopped, use:
+
+```bash
+kill -9 PID
+```
+
+## 9. Check GPU Usage
+
+Deep learning and graphics computing tasks usually need GPUs. Before starting training, first check whether the GPU is free, so you do not accidentally take resources someone else is using.
+
+Check GPU status:
 
 ```bash
 nvidia-smi
 ```
 
-**To refresh the output every second**
+Refresh once per second:
 
 ```bash
 watch -n 1 nvidia-smi
 ```
 
-## 10. View Currently Logged-in Users
+For more rules about shared GPU usage, see [GPU / Disk / Memory Guidelines](../running-experiments/resource-guidelines.md).
 
-```bash
-who
-```
+## 10. Check Current Login Users
 
-Show recent login history
+| Command | What it does |
+| --- | --- |
+| `who` | Shows users currently logged in to the server. |
+| `w` | Shows logged-in users and what they are running. |
+| `last` | Shows recent login records. |
 
-```bash
-last
-```
+These commands help you check whether other people are using the server.
 
 ## 11. Compress and Extract Files
 
@@ -227,3 +259,85 @@ Create a `.zip` archive:
 ```bash
 zip -r archive.zip folder_name
 ```
+
+Extract a `.tar.gz` file:
+
+```bash
+tar -xzf archive.tar.gz
+```
+
+Create a `.tar.gz` archive:
+
+```bash
+tar -czf archive.tar.gz folder_name
+```
+
+See what is inside a `.tar.gz` file:
+
+```bash
+tar -tzf archive.tar.gz | head
+```
+
+## 12. Permission Commands
+
+View file permissions:
+
+```bash
+ls -l file.txt
+```
+
+Make a script executable:
+
+```bash
+chmod +x run.sh
+```
+
+Fix SSH private key permissions:
+
+```bash
+chmod 600 ~/.ssh/id_ed25519_vis
+```
+
+Fix `.ssh` directory and `authorized_keys` permissions:
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+
+!!! warning "Do not casually use `chmod -R 777`"
+
+    `chmod -R 777` makes files under a directory readable, writable, and executable by everyone. On a shared server, this is usually not what you want. If you run into permission problems, first check who owns the file, where you are, and which permissions really need to be opened.
+
+## 13. Useful Command-line Tips
+
+| Command or symbol | What it does |
+| --- | --- |
+| `Ctrl + C` | Interrupt the command currently running in the foreground. |
+| `Ctrl + L` | Clear the screen. |
+| `Tab` | Auto-complete a command or path. |
+| `Up` / `Down` | View the previous or next command. |
+| `command > out.txt` | Write output to a file, overwriting old content. |
+| `command >> out.txt` | Append output to the end of a file. |
+| `command 2> err.txt` | Write error messages to a file. |
+| `command --help` | Show command help. |
+| `man command` | Show the command manual; press `q` to quit. |
+
+Show training output on the screen and write it to a log file at the same time:
+
+```bash
+python train.py 2>&1 | tee train.log
+```
+
+Append to an existing log:
+
+```bash
+python train.py 2>&1 | tee -a train.log
+```
+
+## References
+
+- [The University of Sheffield - Quick Reference (Cheat Sheets)](https://docs.hpc.shef.ac.uk/en/latest/cheatsheets/index.html)
+- [Abhishek Prakash - Linux Jargon Buster](https://itsfoss.com/sudo-rm-rf/)
+- [University of Wisconsin - Basic shell commands](https://chtc.cs.wisc.edu/uw-research-computing/basic-shell-commands)
+- [Abhishek Prakash - Linux Directory Structure Explained for Beginners](https://linuxhandbook.com/linux-directory-structure)

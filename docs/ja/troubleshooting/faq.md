@@ -1,3 +1,3 @@
 # FAQ
 
-このページはプレースホルダーです。内容は後で追加します。
+More common issues will be added here later.

@@ -1,3 +1,3 @@
 # 常见问题
 
-此页面为占位内容，后续将补充。
+More common issues will be added here later.

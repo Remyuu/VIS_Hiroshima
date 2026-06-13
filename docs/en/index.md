@@ -20,7 +20,7 @@
   </a>
   <a class="vis-card" href="connecting-to-servers/ssh-key-pair/">
     <span class="vis-card-label">Recommended Setup</span>
-    <strong>SSH Private and Public Keys</strong>
+    <strong>SSH Public and Private Keys</strong>
     <p>Generate an Ed25519 key, add the public key to the server's <code>authorized_keys</code>, and set local aliases such as <code>vis-server</code> in SSH config.</p>
   </a>
   <a class="vis-card" href="connecting-to-servers/off-campus-access/">
@@ -60,7 +60,7 @@
   </a>
   <a class="vis-card" href="running-experiments/resource-guidelines/">
     <span class="vis-card-label">Shared Resources</span>
-    <strong>GPU / Storage / Memory Guidelines</strong>
+    <strong>GPU / Disk / Memory Guidelines</strong>
     <p>Before starting training, check <code>nvidia-smi</code>, <code>free -h</code>, <code>df -h</code>, and directory usage to avoid putting unnecessary pressure on server resources.</p>
   </a>
 </div>
@@ -71,7 +71,7 @@
   <a class="vis-card" href="troubleshooting/faq/">
     <span class="vis-card-label">Q&amp;A</span>
     <strong>FAQ</strong>
-    <p>This page is for collecting common issues with connections, permissions, environments, and experiment runs; it is currently a placeholder.</p>
+    <p>This page will collect common issues with connections, permissions, environments, and experiment runs.</p>
   </a>
   <a class="vis-card" href="analytics/">
     <span class="vis-card-label">Site Analytics</span>
@@ -94,9 +94,9 @@
 
 <section class="vis-affiliations" aria-label="VIS Hiroshima affiliations">
   <div class="vis-affiliation-logos">
-    <a class="vis-affiliation-logo vis-affiliation-grad" href="http://www.hiroshima-u.ac.jp/info/" aria-label="広島大学 大学院工学研究科情報工学専攻"></a>
-    <a class="vis-affiliation-logo vis-affiliation-course" href="http://www.huis.hiroshima-u.ac.jp/c2/" aria-label="広島大学 工学部第二類情報工学課程"></a>
-    <a class="vis-affiliation-logo vis-affiliation-engineering" href="http://www.hiroshima-u.ac.jp/eng/" aria-label="広島大学 大学院工学研究科・工学部"></a>
-    <a class="vis-affiliation-logo vis-affiliation-university" href="http://www.hiroshima-u.ac.jp/index-j.html" aria-label="広島大学"></a>
+    <a class="vis-affiliation-logo vis-affiliation-grad" href="http://www.hiroshima-u.ac.jp/info/" aria-label="Hiroshima University Graduate School of Engineering, Information Engineering"></a>
+    <a class="vis-affiliation-logo vis-affiliation-course" href="http://www.huis.hiroshima-u.ac.jp/c2/" aria-label="Hiroshima University School of Engineering, Cluster 2 Information Engineering"></a>
+    <a class="vis-affiliation-logo vis-affiliation-engineering" href="http://www.hiroshima-u.ac.jp/eng/" aria-label="Hiroshima University Graduate School of Engineering and School of Engineering"></a>
+    <a class="vis-affiliation-logo vis-affiliation-university" href="http://www.hiroshima-u.ac.jp/index-j.html" aria-label="Hiroshima University"></a>
   </div>
 </section>

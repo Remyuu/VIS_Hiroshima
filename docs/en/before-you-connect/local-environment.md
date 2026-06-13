@@ -8,6 +8,10 @@ In this chapter, we will cover:
 2. Checking what kind of network you are currently on;
 3. What to do in the lab, on the university VPN, and off campus.
 
+<figure markdown="span">
+  ![readme](../../assets/images/before-you-connect/image1.jpeg){ loading=lazy, width="60%" }
+</figure>
+
 ## 1. Set Up a Good Terminal
 
 === "macOS"

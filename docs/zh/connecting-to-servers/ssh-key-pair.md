@@ -10,6 +10,11 @@
 2. 把公钥放到服务器账号的 `authorized_keys` 中；
 3. 用私钥从自己的电脑登录服务器。
 
+<figure markdown="span">
+  ![keep-your-password-private](../../assets/images/connecting-to-servers/image1.png){ loading=lazy, width="60%" }
+  <figcaption>keep-your-password-private</figcaption>
+</figure>
+
 ## 1. 私钥和公钥是什么
 
 SSH key pair 由两个文件组成：
