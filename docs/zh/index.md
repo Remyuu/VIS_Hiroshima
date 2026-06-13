@@ -1,4 +1,4 @@
-<p class="vis-lead">这是面向 <a href="http://vis.hiroshima-u.ac.jp/index">VIS Hiroshima 实验室</a> 成员的服务器与远程实验工作指南。这里整理了从本机准备、SSH 登录、密钥配置、VS Code 远程开发、文件传输，到 tmux 长时间实验和共享资源使用规范的基本流程。</p>
+<p class="vis-lead">这是面向 <a href="http://vis.hiroshima-u.ac.jp/index">广岛大学的视觉信息学研究室（ビジュアル情報学研究室）</a> 成员的服务器与远程实验工作指南。这里整理了从本机准备、SSH 登录、密钥配置、VS Code 远程开发、文件传输，到 tmux 长时间实验和共享资源使用规范的基本流程。</p>
 
 ## 开始之前
 

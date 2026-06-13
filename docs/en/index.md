@@ -1,4 +1,4 @@
-<p class="vis-lead">This is a server and remote experiment workflow guide for <a href="http://vis.hiroshima-u.ac.jp/index">VIS Hiroshima lab</a> members. It covers the basic path from preparing your local computer, SSH login, key setup, VS Code remote development, and file transfer to long-running experiments with tmux and shared-resource guidelines.</p>
+<p class="vis-lead">This is a server and remote experiment workflow guide for <a href="http://vis.hiroshima-u.ac.jp/index">Visual Information Science Laboratory, Hiroshima University</a> members. It covers the basic path from preparing your local computer, SSH login, key setup, VS Code remote development, and file transfer to long-running experiments with tmux and shared-resource guidelines.</p>
 
 ## Before You Connect
 
