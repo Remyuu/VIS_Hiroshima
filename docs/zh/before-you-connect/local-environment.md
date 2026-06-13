@@ -12,7 +12,7 @@
 
 === "macOS"
 
-    虽然 macOS 自带终端 Terminal 可以直接使用，但是我个人推荐使用 [iTerm2](https://iterm2.com/) 或者是 [Ghostty](https://ghostty.org/) 。前者较为成熟，后者界面美观性能好。
+    虽然 macOS 自带终端 Terminal 可以直接使用，但我个人更推荐 [Ghostty](https://ghostty.org/) 。它界面清爽、速度快，默认配置也比较舒服。如果你想用更成熟、资料更多的选择，[iTerm2](https://iterm2.com/) 也很好。
 
     macOS 上最常用的包管理器是 [Homebrew](https://brew.sh/) 。你可以直接在终端下载：
 
@@ -27,11 +27,40 @@
     brew install --cask iterm2
     ```
 
+    二选一即可。
+
 === "Windows"
 
     在 Windows 上，自带的 PowerShell 已经足够强大了，因此不在此推荐其他终端。
 
     Windows 上可以使用 `winget` 安装常用软件。但对于初学者而言，直接去软件官网安装下载包更为推荐。
+
+=== "Linux"
+
+    Linux 桌面环境通常已经自带可用的终端，例如 GNOME Terminal、Konsole 或者系统默认的 Terminal。一般不需要额外安装新的终端。
+
+    如果你想换一个更现代一点的终端，也可以试试 [Ghostty](https://ghostty.org/) 。它在 Linux 上通常通过各个发行版或社区维护的包安装。如果你的包管理器里暂时找不到 Ghostty，先用系统默认终端也完全没问题。
+
+    如果你的系统没有 SSH 客户端，可以通过发行版自带的包管理器安装。例如 Ubuntu / Debian 可以使用：
+
+    ```bash
+    sudo apt update
+    sudo apt install openssh-client
+    ```
+
+    Fedora 可以使用：
+
+    ```bash
+    sudo dnf install openssh-clients
+    ```
+
+    Arch Linux 可以使用：
+
+    ```bash
+    sudo pacman -S openssh
+    ```
+
+    如果你不确定自己用的是哪个发行版，先打开终端试一下 `ssh` 命令。能看到帮助信息或用法说明，就说明已经可以用了。
 
 ## 2. 在实验室直接连接 Zone C 的局域网
 
@@ -74,7 +103,10 @@ Approximate round trip times in milli-seconds:
 
 [VPN(SSL-VPN)サービス](https://www.media.hiroshima-u.ac.jp/services/hinet/vpngw/) 里面明确提到，如果想要访问 Zone C 网络，需要你与管理员（Hirakiuchi-san）取得联系，将用户的 IMC 账户登记为该 Zone C 的 VPN 用户，然后被登记用户在 [ネットワーク利用申請サービス](https://hinet-apply.media.hiroshima-u.ac.jp/) 中选择你需要进入的 Zone C 网络。
 
-![](https://www.media.hiroshima-u.ac.jp/wp-content/uploads/2021/04/zonec-vpn2.png)
+<figure markdown="span">
+  ![zonec-vpn2](../../assets/images/before-you-connect/image0.png){ loading=lazy }
+  <figcaption>zonec-vpn2</figcaption>
+</figure>
 
 即使你没有 VIS Lab Zone C 的权限，你也可以通过校园网 VPN 使用校内的服务器计算资源 DGX-2 。但依旧需要询问管理员（Hirakiuchi-san）获取 DGX-2 的账户。DGX-2 的 SSH 登录示例：
 
@@ -87,7 +119,7 @@ ssh user-name@dgx2.hu-sm-ai.hiroshima-u.ac.jp
 
 ## 4. 在校外访问服务器
 
-如果你在家里、宿舍、咖啡店、出差地点，或者使用手机热点，不要默认自己可以直接连接实验室服务器。请先确认当前是否有学校或实验室批准的访问方式，例如校园 VPN、Zone C VPN 授权，或管理员明确提供的其他连接路径。
+如果你在家里、咖啡店、出差地点，或者使用手机热点，不要默认自己可以直接连接实验室服务器。请先确认当前是否有学校或实验室批准的访问方式，例如校园 VPN、Zone C VPN 授权，或管理员明确提供的其他连接路径。
 
 !!! warning "不要私自暴露服务器"
     不要私自把实验室服务器的 SSH 端口暴露到公网，也不要未经允许配置反向隧道、端口转发、第三方组网或远程控制工具。服务器是共享资源，网络访问方式必须遵守实验室和学校的安全要求。
