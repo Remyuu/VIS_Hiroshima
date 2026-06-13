@@ -4,6 +4,9 @@ site_url: https://remyuu.github.io/VIS_Hiroshima/
 repo_url: https://github.com/Remyuu/VIS_Hiroshima
 repo_name: Remyuu/VIS_Hiroshima
 edit_uri: edit/main/docs/
+copyright: >-
+  Copyright © 2026 Visual Information Science Laboratory, Hiroshima University<br>
+  〒739-8527 広島県東広島市鏡山1丁目4-1 工学部A1棟3階 333
 
 theme:
   name: material

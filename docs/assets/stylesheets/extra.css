@@ -64,6 +64,51 @@
   padding: 0.6rem 0 1.1rem;
 }
 
+.vis-affiliations {
+  margin: 2.2rem 0 0;
+}
+
+.vis-affiliation-logos {
+  align-items: center;
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.vis-affiliation-logo {
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 9%, transparent);
+  border-radius: 0.35rem;
+  display: block;
+  height: 3.2rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.vis-affiliation-logo:hover {
+  border-color: var(--md-typeset-a-color);
+  box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.vis-affiliation-grad {
+  background-image: url("../images/affiliations/hu_grad_info_eng_vis.svg");
+}
+
+.vis-affiliation-course {
+  background-image: url("../images/affiliations/hu_eng2_info_vis.svg");
+}
+
+.vis-affiliation-engineering {
+  background-image: url("../images/affiliations/hu_engineering.svg");
+}
+
+.vis-affiliation-university {
+  background-image: url("../images/affiliations/hiroshima_university.svg");
+}
+
 .vis-card-grid {
   display: grid;
   gap: 0.9rem;
@@ -263,10 +308,19 @@
   color: var(--md-accent-fg-color);
 }
 
+[data-md-color-scheme="slate"] .vis-affiliation-logo:hover {
+  border-color: var(--md-accent-fg-color);
+}
+
 [data-md-color-scheme="slate"] .vis-contributor:hover {
   box-shadow:
     0 0 0 2px var(--md-accent-fg-color),
     0 0.35rem 1.1rem rgba(0, 0, 0, 0.28);
+}
+
+.md-copyright__highlight {
+  display: block;
+  line-height: 1.6;
 }
 
 @media screen and (max-width: 76.2344em) {
@@ -305,5 +359,22 @@
   .vis-analytics iframe {
     height: 40rem;
     min-height: 40rem;
+  }
+}
+
+@media screen and (max-width: 44em) {
+  .vis-affiliation-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vis-affiliation-logo {
+    height: 3rem;
+  }
+
+}
+
+@media screen and (max-width: 27em) {
+  .vis-affiliation-logos {
+    grid-template-columns: 1fr;
   }
 }
