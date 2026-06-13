@@ -11,6 +11,8 @@ copyright: >-
 theme:
   name: material
   language: en
+  logo: assets/images/hiroshima-university-emblem.svg
+  favicon: assets/images/hiroshima-university-emblem.svg
   font:
     text: Inter
     code: JetBrains Mono
@@ -161,3 +163,4 @@ extra_css:
 extra_javascript:
   - assets/javascripts/umami.js
   - assets/javascripts/contributors.js
+  - assets/javascripts/external-links.js
