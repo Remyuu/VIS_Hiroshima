@@ -59,6 +59,15 @@ fix(i18n): restore missing localized page
 ## Local Preview
 
 ```bash
+conda create -n vis-hiroshima python=3.11
+conda activate vis-hiroshima
+pip install -r requirements.txt
+mkdocs serve
+```
+
+or
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
