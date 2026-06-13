@@ -11,7 +11,7 @@ One thing to keep in mind: VS Code Remote SSH does not turn the server into your
 With Remote SSH, the VS Code window is shown on your own computer, but the important work happens on the remote server:
 
 <figure markdown="span">
-  ![VS Code Remote SSH architecture](https://code.visualstudio.com/assets/docs/remote/remote-overview/architecture.png){ loading=lazy }
+  ![VS Code Remote SSH architecture](../../assets/images/daily-remote-workflow/image7.png){ loading=lazy }
   <figcaption>VS Code Remote SSH architecture</figcaption>
 </figure>
 
