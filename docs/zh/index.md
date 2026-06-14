@@ -53,6 +53,11 @@
 ## 运行实验
 
 <div class="vis-card-grid">
+  <a class="vis-card" href="running-experiments/python-environments/">
+    <span class="vis-card-label">实验环境</span>
+    <strong>Python 实验环境隔离</strong>
+    <p>安装 Miniforge，为每个项目创建独立 conda 环境，避免依赖冲突并便于复现实验。</p>
+  </a>
   <a class="vis-card" href="running-experiments/tmux-and-experiments/">
     <span class="vis-card-label">长时间任务</span>
     <strong>tmux 和运行实验</strong>

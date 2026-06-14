@@ -112,9 +112,10 @@ python train.py
 mkdir -p logs
 ```
 
-如果需要 conda 环境，先激活：
+先激活 Miniforge / conda 环境：
 
 ```bash
+source ~/opt/miniforge3/etc/profile.d/conda.sh
 conda activate your-env-name
 ```
 
