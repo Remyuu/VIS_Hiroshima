@@ -84,6 +84,7 @@ plugins:
             File Transfer: 文件传输
             Running Experiments: 运行实验
             tmux and Running Experiments: tmux 和运行实验
+            Python Environment Isolation: Python 实验环境隔离
             Resource Guidelines: GPU / 硬盘 / 内存使用规范
             Troubleshooting: 常见问题排查
             FAQ: 常见问题
@@ -108,6 +109,7 @@ plugins:
             File Transfer: ファイル転送
             Running Experiments: 実験の実行
             tmux and Running Experiments: tmux と実験の実行
+            Python Environment Isolation: Python 実験環境の分離
             Resource Guidelines: GPU / ストレージ / メモリ利用規則
             Troubleshooting: トラブルシューティング
             FAQ: FAQ
@@ -133,6 +135,7 @@ nav:
       - VS Code Remote SSH: daily-remote-workflow/vscode-remote-ssh.md
       - File Transfer: daily-remote-workflow/file-transfer.md
   - Running Experiments:
+      - Python Environment Isolation: running-experiments/python-environments.md
       - tmux and Running Experiments: running-experiments/tmux-and-experiments.md
       - Resource Guidelines: running-experiments/resource-guidelines.md
   - Troubleshooting:

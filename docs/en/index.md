@@ -53,6 +53,11 @@
 ## Running Experiments
 
 <div class="vis-card-grid">
+  <a class="vis-card" href="running-experiments/python-environments/">
+    <span class="vis-card-label">Experiment Environments</span>
+    <strong>Python Environment Isolation</strong>
+    <p>Install Miniforge and use a separate conda environment for each project to avoid dependency conflicts.</p>
+  </a>
   <a class="vis-card" href="running-experiments/tmux-and-experiments/">
     <span class="vis-card-label">Long-running Tasks</span>
     <strong>tmux and Running Experiments</strong>
