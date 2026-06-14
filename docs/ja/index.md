@@ -53,6 +53,11 @@
 ## 実験の実行
 
 <div class="vis-card-grid">
+  <a class="vis-card" href="running-experiments/python-environments/">
+    <span class="vis-card-label">実験環境</span>
+    <strong>Python 実験環境の分離</strong>
+    <p>Miniforge をインストールし、プロジェクトごとに conda 環境を分けて依存関係の衝突を避けます。</p>
+  </a>
   <a class="vis-card" href="running-experiments/tmux-and-experiments/">
     <span class="vis-card-label">長時間タスク</span>
     <strong>tmux と実験の実行</strong>

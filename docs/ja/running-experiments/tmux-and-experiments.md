@@ -112,9 +112,10 @@ Create a log directory first:
 mkdir -p logs
 ```
 
-If you need a conda environment, activate it first:
+Activate Miniforge / conda environment first:
 
 ```bash
+source ~/opt/miniforge3/etc/profile.d/conda.sh
 conda activate your-env-name
 ```
 
