@@ -5,8 +5,9 @@ repo_url: https://github.com/Remyuu/VIS_Hiroshima
 repo_name: Remyuu/VIS_Hiroshima
 edit_uri: edit/main/docs/
 copyright: >-
-  Copyright © 2026 Visual Information Science Laboratory, Hiroshima University<br>
-  〒739-8527 広島県東広島市鏡山1丁目4-1 工学部A1棟3階 333
+  Copyright © 2026 Visual Information Science Laboratory, Hiroshima University<br><br>
+  〒739-8527 広島県東広島市鏡山1丁目4-1 工学部A1棟3階 333<br>
+  We use <a href="https://umami.is/">Umami</a> to analyse site traffic.
 
 theme:
   name: material
@@ -20,6 +21,7 @@ theme:
     - content.action.edit
     - content.action.view
     - content.code.copy
+    - navigation.path
     - navigation.footer
     - navigation.tabs
     - navigation.tabs.sticky
@@ -53,6 +55,11 @@ theme:
 
 plugins:
   - search
+  - glightbox:
+      auto_themed: true
+      auto_caption: true
+      background: none
+      shadow: false
   - i18n:
       docs_structure: folder
       languages:
