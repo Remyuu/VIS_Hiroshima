@@ -1,13 +1,23 @@
 # Python Environment Isolation
 
-This page explains how to install Miniforge3 and use conda / mamba to create isolated Python environments for different experiments.
+This page explains how to install Miniforge3 on the lab server and use conda to create isolated Python environments for different experiments.
 
-Do not rely on the system Python for experiments. Use a separate environment for each project. Prefer conda / mamba for dependency management.
+Do not rely on the system Python for experiments. Use a separate environment for each project. Prefer conda for dependency management.
 
 <figure markdown="span">
-  ![mamba](../../assets/images/running-experiments/image1.png){ loading=lazy, width="60%" }
+  ![Python-environment-meme](../../assets/images/running-experiments/image1.png){ loading=lazy, width="60%" }
   <figcaption>https://programmerhumor.io/python-memes/gis-and-ml-is-a-whole-new-world-of-hurt/</figcaption>
 </figure>
+
+!!! note "Miniforge or Miniconda?"
+
+    This guide uses Miniforge3 consistently. Miniforge uses `conda-forge` by default, while Miniconda uses Anaconda's default package channels. Both are lightweight Conda distributions, but this guide chooses Miniforge because it is community-developed and avoids commercial licensing concerns.
+
+    If your computer already has Miniconda installed, you do not need to replace it immediately. Most conda commands still apply.
+
+    Do not install both Miniforge and Miniconda at the same time, and do not casually mix different package channels in the same environment.
+
+    **If you are not sure which one to use, use Miniforge.**
 
 ## 1. Why Environment Isolation Matters
 
@@ -48,7 +58,7 @@ This means the server has a system Python, but Miniforge / conda is not prepared
 
 !!! warning "Do not modify system Python"
 
-    Do not use system Python as your experiment environment. Experiment dependencies should go into your own Miniforge / conda environment.
+    Do not use system Python as your experiment environment. Regular users do not have sudo permission. Experiment dependencies should go into your own Miniforge / conda environment.
 
 If you type `pip` directly, you may see a message like:
 
@@ -62,7 +72,7 @@ This means the system-level `pip` command is not installed. For experiment users
 
 ## 3. Install Miniforge
 
-Miniforge is a lightweight conda distribution. It uses `conda-forge` by default and includes `mamba`. Compared with the full Anaconda distribution, it is a better fit for personal experiment environment management.
+Miniforge is a lightweight conda distribution that uses `conda-forge` by default. Compared with the full Anaconda distribution, it is a better fit for personal experiment environment management.
 
 Install it under your home directory:
 
@@ -88,7 +98,6 @@ Check the result:
 
 ```bash
 ~/opt/miniforge3/bin/conda --version
-~/opt/miniforge3/bin/mamba --version
 ~/opt/miniforge3/bin/python --version
 ```
 
@@ -97,13 +106,11 @@ If you see output like this, the installation succeeded:
 ```bash
 jie-zhang@Ubuntu:~/opt$ ~/opt/miniforge3/bin/conda --version
 conda 26.3.2
-jie-zhang@Ubuntu:~/opt$ ~/opt/miniforge3/bin/mamba --version
-2.5.0
 jie-zhang@Ubuntu:~/opt$ ~/opt/miniforge3/bin/python --version
 Python 3.13.13
 ```
 
-## 4. Enable conda / mamba
+## 4. Enable conda
 
 After installation, the current shell may not know where `conda` is. Load it manually first:
 
@@ -115,10 +122,7 @@ Then check:
 
 ```bash
 conda --version
-mamba --version
 ```
-
-You can think of `mamba` as a faster `conda`. In most cases, `mamba create` and `mamba install` can replace `conda create` and `conda install`.
 
 ## 5. Should You Write It into ~/.bashrc? Recommended
 
@@ -152,10 +156,10 @@ source ~/opt/miniforge3/etc/profile.d/conda.sh
 
 ## 6. Create a Project Environment
 
-It is best to keep the environment name same with the project name. For example, if the project is called `nerf-room1`:
+It is best to keep the environment name consistent with the project name. For example, if the project is called `nerf-room1`:
 
 ```bash
-mamba create -n nerf-room1 python=3.11 -y
+conda create -n nerf-room1 python=3.11 -y
 conda activate nerf-room1
 ```
 
@@ -177,14 +181,14 @@ Python 3.11.15
 
 !!! warning "Do not install dependencies into base"
 
-    `base` should only provide environment management tools such as `conda` / `mamba`. Dependencies needed by training code, such as `torch`, `tensorflow`, `opencv`, and `numpy`, should go into the project's own environment.
+    `base` should only provide environment management tools such as `conda`. Dependencies needed by training code, such as `torch`, `tensorflow`, `opencv`, and `numpy`, should go into the project's own environment.
 
 ## 7. Install Project Dependencies
 
-Prefer conda / mamba for complex dependencies:
+Prefer conda for complex dependencies:
 
 ```bash
-mamba install numpy pandas matplotlib -y
+conda install numpy pandas matplotlib -y
 ```
 
 If the project provides `requirements.txt` and you have already activated the project environment:
@@ -209,7 +213,74 @@ This ensures that `pip` belongs to the currently activated Python environment.
 
     Do not run `pip install` before activating the conda environment.
 
-## 8. Run Experiments
+## 8. Use a Specific CUDA Toolkit Version in a conda Environment
+
+The lab servers are shared by multiple users. Do not try to install or modify CUDA at the OS level yourself. Global changes to `/usr/local/cuda`, system environment variables, or driver-related components may affect experiments that other students are currently running.
+
+A safer approach is to install the CUDA Toolkit or deep learning framework CUDA version required by your project inside your own conda environment. This allows different projects to use different CUDA-related dependencies without modifying the system-wide environment.
+
+!!! note "CUDA Toolkit is not the NVIDIA driver"
+
+    The `cuda-toolkit` installed inside a conda environment mainly provides compiler tools, header files, and user-space libraries, such as `nvcc`. The GPU driver is still a system-level component and should be maintained by the administrator.
+
+    If the server's system driver is too old, a newer CUDA Toolkit installed inside a conda environment may still fail to run the corresponding GPU program.
+
+If you only need to install frameworks such as PyTorch or TensorFlow, usually check the framework's official installation command first. For example, PyTorch provides installation commands for different CUDA versions. Do not blindly install a system-level CUDA first.
+
+If your project needs `nvcc`, for example to compile a CUDA extension, install a package that requires local CUDA compilation, or satisfy a course / code requirement for a specific CUDA Toolkit version, install the specified version inside the activated project environment.
+
+For example, create an environment that needs CUDA 11.6:
+
+```bash
+conda create -n cuda116-demo python=3.10 -y
+conda activate cuda116-demo
+```
+
+Install CUDA 11.6 Toolkit in this environment:
+
+```bash
+conda install -c nvidia/label/cuda-11.6.2 cuda-toolkit
+```
+
+After installation, check:
+
+```bash
+which nvcc
+nvcc -V
+```
+
+If you see output similar to the following, the `nvcc` in the current conda environment is CUDA 11.6:
+
+```text
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2022 NVIDIA Corporation
+Built on Tue_Mar__8_18:18:20_PST_2022
+Cuda compilation tools, release 11.6, V11.6.124
+Build cuda_11.6.r11.6/compiler.31057947_0
+```
+
+It is also recommended to check the system GPU and driver status:
+
+```bash
+nvidia-smi
+```
+
+Note that the `CUDA Version` shown by `nvidia-smi` means the highest CUDA runtime version supported by the current system driver. It is not necessarily the same as the CUDA Toolkit version shown by `nvcc -V` inside your current conda environment. To determine the Toolkit version of the current environment, use `which nvcc` and `nvcc -V`.
+
+After logging in to the server again, reactivate the environment:
+
+```bash
+source ~/opt/miniforge3/etc/profile.d/conda.sh
+conda activate cuda116-demo
+```
+
+If you have already run `conda init bash` and opened a new terminal, you can usually run:
+
+```bash
+conda activate cuda116-demo
+```
+
+## 9. Run Experiments
 
 Before starting an experiment, get into the habit of checking:
 
@@ -244,7 +315,7 @@ python train.py 2>&1 | tee "logs/train_$(date +%Y%m%d_%H%M%S).log"
 
 For how to keep long-running experiments alive, see [tmux and Running Experiments](tmux-and-experiments.md).
 
-## 9. Export and Reproduce an Environment
+## 10. Export and Reproduce an Environment
 
 If you want others to reproduce your experiment, export an environment file:
 
@@ -259,7 +330,7 @@ Others can reproduce it with:
 
 ```bash
 source ~/opt/miniforge3/etc/profile.d/conda.sh
-mamba env create -f environment.yml
+conda env create -f environment.yml
 conda activate nerf-room1
 ```
 
@@ -269,9 +340,9 @@ If the project mainly uses `pip` packages, you can also record:
 python -m pip freeze > requirements.txt
 ```
 
-For complex dependencies such as CUDA, PyTorch, and OpenCV, conda / mamba is usually the better choice.
+For complex dependencies such as CUDA, PyTorch, and OpenCV, conda is usually the better choice.
 
-## 10. Use with VS Code Remote SSH
+## 11. Use with VS Code Remote SSH
 
 After opening the project through VS Code Remote SSH, if the Python extension does not automatically detect the environment, select the interpreter manually:
 
@@ -292,7 +363,7 @@ source ~/opt/miniforge3/etc/profile.d/conda.sh
 conda activate nerf-room1
 ```
 
-## 11. Disk Usage and Cleanup
+## 12. Disk Usage and Cleanup
 
 conda environments can be large. A deep learning environment using several GB is common. Check disk usage regularly:
 
@@ -313,14 +384,14 @@ Clean downloaded package caches:
 conda clean -a
 ```
 
-## 12. FAQ
+## 13. FAQ
 
 ### I Accidentally Installed Packages into base
 
 Stop installing more packages into `base`. For future projects, create a project environment:
 
 ```bash
-mamba create -n my-project python=3.11 -y
+conda create -n my-project python=3.11 -y
 conda activate my-project
 ```
 
@@ -350,3 +421,6 @@ If the reverse command is unavailable, manually edit `~/.bashrc` and remove the 
 - [University of Florida Research Computing: Computation](https://docs.rc.ufl.edu/quickstart/computation/)
 - [Yale Center for Research Computing: Jupyter Conda Environments](https://docs.ycrc.yale.edu/clusters-at-yale/access/ood-jupyter/)
 - [conda-forge/miniforge](https://github.com/conda-forge/miniforge)
+- [NVIDIA CUDA Installation Guide for Linux: Conda Installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+- [NVIDIA cuda-toolkit on Anaconda.org](https://anaconda.org/nvidia/cuda-toolkit)
+- [PyTorch: Get Started Locally](https://pytorch.org/get-started/locally/)
