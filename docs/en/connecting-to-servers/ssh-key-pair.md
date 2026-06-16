@@ -26,9 +26,7 @@ An SSH key pair has two files:
 
 You can think of it like this:
 
-- The **private key** is your own key. Do not send it to anyone;
-- The **public key** is like lock information that you can give to the server administrator or put in your server account;
-- The server only needs the public key. It does not need to know your private key.
+The **private key** is your own key. Do not send it to anyone. The server only needs the public key. It does not need to know your private key.
 
 !!! warning "Do not leak your private key"
 

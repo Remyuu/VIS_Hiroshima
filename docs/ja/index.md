@@ -1,5 +1,10 @@
 <p class="vis-lead">これは <a href="http://vis.hiroshima-u.ac.jp/index">VIS Hiroshima 実験室</a> のメンバー向けの、サーバーとリモート実験ワークフローのガイドです。ローカル環境の準備、SSH ログイン、鍵設定、VS Code によるリモート開発、ファイル転送から、tmux での長時間実験と共有リソース利用規則までの基本的な流れをまとめています。</p>
 
+<figure markdown="span">
+  ![cover](../assets/images/cover.jpeg){ loading=lazy }
+  <figcaption>PBRT-v4 spectral GPU path tracing render of the San Miguel de Allende courtyard scene. Rendered with the volpath integrator at 4096 samples per pixel on an NVIDIA RTX PRO 6000 Blackwell Max-Q GPU. Final homepage crop: 3840 x 2160. Total render time: 5 min 39 sec.</figcaption>
+</figure>
+
 ## 始める前に
 
 <div class="vis-card-grid">

@@ -10,6 +10,10 @@ If you are at home, at a cafe, or using a mobile hotspot, you usually cannot acc
 
     Hiroshima University restricts P2P communication. For details, see [Hiroshima University - P2P communication restrictions](https://www.media.hiroshima-u.ac.jp/services/secuinfo/disable_port/) (campus network only).
 
+<figure markdown="span" style="background-color:white;">
+  ![vpngw](../../assets/images/connecting-to-servers/image2.png){ loading=lazy width="90%" }
+</figure>
+
 ## 1. Check Your Current Network First
 
 VIS Lab server addresses usually look like `10.30.XXX.XXX`. These are private network addresses. They can only be accessed from the lab network or an authorized Zone C VPN environment, not directly from a normal off-campus network.
@@ -74,7 +78,7 @@ If off-campus connection fails, first look at the error message.
 
 ### `Connection timed out`
 
-This usually means there is no network path from your computer to the server. Common reasons include:
+This means you can't connect to the server from your computer. Common reasons include:
 
 - You are connected only to normal SSL-VPN, without VIS Lab Zone C permission;
 - You did not select the correct Zone C in the VPN settings.

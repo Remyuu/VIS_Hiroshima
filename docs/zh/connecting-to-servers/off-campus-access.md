@@ -10,6 +10,10 @@
 
     广岛大学对 P2P 通信有限制。相关说明可参考 [Hiroshima University - P2P通信の制限について](https://www.media.hiroshima-u.ac.jp/services/secuinfo/disable_port/)（校内网络访问限定）。
 
+<figure markdown="span" style="background-color:white;">
+  ![vpngw](../../assets/images/connecting-to-servers/image2.png){ loading=lazy width="90%" }
+</figure>
+
 ## 1. 先判断你所在的网络
 
 VIS Lab 服务器地址通常是 `10.30.XXX.XXX` 这样的内网地址。这类地址只能在实验室网络或被授权的 Zone C VPN 环境中访问，不能从普通校外网络直接访问。
@@ -74,7 +78,7 @@ ssh vis-server
 
 ### `Connection timed out`
 
-通常表示你的电脑到服务器没有网络路径。常见原因包括：
+表示你的电脑无法连接到服务器。常见原因包括：
 
 - 只连接了普通 SSL-VPN，但没有 VIS Lab Zone C 权限；
 - 没有在 VPN 设置中选择正确的 Zone C；
@@ -88,7 +92,7 @@ ssh vis-server
 
 ## 5. 获得批准的访问路径后
 
-一旦网络路径确认可用，后续操作仍然建议使用普通 SSH 工作流：
+一旦网络路径确认可用，后续操作就是普通 SSH 工作流：
 
 - 在本机配置 `~/.ssh/config`；
 - 使用 SSH key 登录；

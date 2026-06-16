@@ -265,6 +265,10 @@ It is also recommended to check the system GPU and driver status:
 nvidia-smi
 ```
 
+<figure markdown="span">
+    ![cuda-version](../../assets/images/running-experiments/image3.png){ loading=lazy, width="80%" }
+</figure>
+
 Note that the `CUDA Version` shown by `nvidia-smi` means the highest CUDA runtime version supported by the current system driver. It is not necessarily the same as the CUDA Toolkit version shown by `nvcc -V` inside your current conda environment. To determine the Toolkit version of the current environment, use `which nvcc` and `nvcc -V`.
 
 After logging in to the server again, reactivate the environment:

@@ -1,4 +1,9 @@
-<p class="vis-lead">This is a server and remote experiment workflow guide for <a href="http://vis.hiroshima-u.ac.jp/index">Visual Information Science Laboratory, Hiroshima University</a> members. It covers the basic path from preparing your local computer, SSH login, key setup, VS Code remote development, and file transfer to long-running experiments with tmux and shared-resource guidelines.</p>
+<p class="vis-lead">This is a server and remote experiment workflow guide for <a href="http://vis.hiroshima-u.ac.jp/index">Visual Information Science Laboratory</a> members in Hiroshima University. It covers the basic path from preparing your local computer, SSH login, key setup, VS Code remote development, and file transfer to long-running experiments with tmux and shared-resource guidelines.</p>
+
+<figure markdown="span">
+  ![cover](../assets/images/cover.jpeg){ loading=lazy }
+  <figcaption>PBRT-v4 spectral GPU path tracing render of the San Miguel de Allende courtyard scene. Rendered with the volpath integrator at 4096 samples per pixel on an NVIDIA RTX PRO 6000 Blackwell Max-Q GPU. Final homepage crop: 3840 x 2160. Total render time: 5 min 39 sec.</figcaption>
+</figure>
 
 ## Before You Connect
 

@@ -266,6 +266,10 @@ Build cuda_11.6.r11.6/compiler.31057947_0
 nvidia-smi
 ```
 
+<figure markdown="span">
+    ![cuda-version](../../assets/images/running-experiments/image3.png){ loading=lazy, width="80%" }
+</figure>
+
 注意，`nvidia-smi` 中显示的 `CUDA Version` 表示当前系统驱动最高支持的 CUDA 运行时版本，不一定等于你当前 conda 环境里 `nvcc -V` 显示的 CUDA Toolkit 版本。判断当前环境的 Toolkit 版本时，以 `which nvcc` 和 `nvcc -V` 为准。
 
 重新登录服务器后，需要重新激活环境：

@@ -1,5 +1,10 @@
 <p class="vis-lead">这是面向 <a href="http://vis.hiroshima-u.ac.jp/index">广岛大学的视觉信息学研究室（ビジュアル情報学研究室）</a> 成员的服务器与远程实验工作指南。这里整理了从本机准备、SSH 登录、密钥配置、VS Code 远程开发、文件传输，到 tmux 长时间实验和共享资源使用规范的基本流程。</p>
 
+<figure markdown="span">
+  ![cover](../assets/images/cover.jpeg){ loading=lazy }
+  <figcaption>PBRT-v4 spectral GPU path tracing render of the San Miguel de Allende courtyard scene. Rendered with the volpath integrator at 4096 samples per pixel on an NVIDIA RTX PRO 6000 Blackwell Max-Q GPU. Final homepage crop: 3840 x 2160. Total render time: 5 min 39 sec.</figcaption>
+</figure>
+
 ## 开始之前
 
 <div class="vis-card-grid">
