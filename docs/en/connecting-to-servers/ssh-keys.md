@@ -182,7 +182,30 @@ For example, `pwd` shows your current directory.
 
 `nvidia-smi` shows the current GPU usage.
 
-## 7. How to Leave the Server
+## 7. Reset the Password Immediately
+
+If you logged in with an initial password from the administrator, such as a temporary password based on today's date, change it to a password only you know right after your first successful login.
+
+Run this command in the server terminal:
+
+```bash
+passwd
+```
+
+The server will ask for your current password, then the new password twice:
+
+```text
+現在のパスワード:
+新しいパスワード:
+新しいパスワードを再入力してください:
+passwd: パスワードは正しく更新されました
+```
+
+Just like SSH login, nothing appears on the screen while you type the password. Do not use your student ID, birthday, name, simple numbers, or a password reused from another website or university account.
+
+If the password change fails, or if you already forgot the current password, contact Hirakiuchi-san or another server administrator.
+
+## 8. How to Leave the Server
 
 Type `exit` in the command line and press Enter to close the current SSH session.
 
@@ -190,7 +213,7 @@ Closing the terminal window usually also disconnects you, but it is better to ge
 
 If you run a long program directly in a normal SSH window, the program may stop when the SSH connection closes. Long-running experiments should use `tmux`. See [tmux and Running Experiments](../running-experiments/tmux-and-experiments.md) for details.
 
-## 8. Common Connection Errors
+## 9. Common Connection Errors
 
 ### `Connection timed out`
 
@@ -224,7 +247,7 @@ ssh: Could not resolve hostname ...
 
 it usually means the server address is wrong. If you are using an IP address, check whether any numbers or dots are missing.
 
-## 9. Basic Security Notes
+## 10. Basic Security Notes
 
 Please follow these rules:
 
@@ -234,7 +257,7 @@ Please follow these rules:
 
 Later, you can set up SSH key login. With an SSH key, you usually do not need to type the server password every time, and it is nicer for long-term use. See [SSH Public and Private Keys](ssh-key-pair.md) for the steps.
 
-## 10. What You Should Know After This Page
+## 11. What You Should Know After This Page
 
 After finishing this page, you should be able to:
 
