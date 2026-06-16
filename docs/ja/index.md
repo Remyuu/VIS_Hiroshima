@@ -1,4 +1,4 @@
-<p class="vis-lead">これは <a href="http://vis.hiroshima-u.ac.jp/index">VIS Hiroshima 実験室</a> のメンバー向けの、サーバーとリモート実験ワークフローのガイドです。ローカル環境の準備、SSH ログイン、鍵設定、VS Code によるリモート開発、ファイル転送から、tmux での長時間実験と共有リソース利用規則までの基本的な流れをまとめています。</p>
+<p class="vis-lead">これは <a href="http://vis.hiroshima-u.ac.jp/index">広島大学ビジュアル情報学研究室</a> のメンバー向けの、サーバーとリモート実験ワークフローのガイドです。ローカル環境の準備、SSH ログイン、鍵設定、VS Code によるリモート開発、ファイル転送から、tmux での長時間実験と共有リソース利用規則までの基本的な流れをまとめています。</p>
 
 <figure markdown="span">
   ![cover](../assets/images/cover.jpeg){ loading=lazy }
