@@ -78,7 +78,7 @@ CUDA_VISIBLE_DEVICES=1 python train.py
 
     I recommend first running a small experiment on one GPU. After confirming memory usage, speed, and logs are normal, then consider multiple GPUs.
 
-## 4. CPU and System Memory
+## 3. CPU and System Memory
 
 GPU training also uses CPU and system memory.
 
@@ -110,7 +110,7 @@ num_workers=32
 
 This may use a lot of CPU and memory. Start from `2`, `4`, or `8`, then adjust after observing speed and memory usage.
 
-## 5. Disk Space
+## 4. Disk Space
 
 Training outputs, checkpoints, datasets, and similar files can easily fill the disk. When the disk is full, experiments may fail, and in worse cases other users may also be affected.
 
@@ -146,7 +146,7 @@ Do not use this if you are not sure where you are:
 rm -rf *
 ```
 
-## 6. Many Small Files
+## 5. Many Small Files
 
 Many small files can slow down the filesystem. For example, if you put hundreds of thousands of images, log fragments, or intermediate outputs in one directory, reading, deleting, backing up, and syncing can all become slow.
 
@@ -174,7 +174,7 @@ outputs/
     001001.png
 ```
 
-## 7. Disk I/O
+## 6. Disk I/O
 
 Disk I/O means pressure from reading and writing disk. Even if the GPU is not full, the server can become slow if someone is extracting, copying, deleting, or reading lots of small files.
 
@@ -186,7 +186,7 @@ du -sh dataset/
 
 If you are transferring many small files from your own computer to the server, it is better to compress them first and transfer one archive. See [File Transfer](../daily-remote-workflow/file-transfer.md).
 
-## 8. After an Experiment Finishes
+## 7. After an Experiment Finishes
 
 When an experiment finishes, do not just close your local computer. I recommend doing a few checks.
 
@@ -216,7 +216,7 @@ nvidia-smi
 
 For important results, transfer them back to your own computer or another approved long-term storage location. Do not treat the server disk as your only backup.
 
-## 10. Recommended Habits
+## 8. Recommended Habits
 
 Get into the habit of checking `nvidia-smi` before every training run. Also confirm `pwd` before starting each experiment.
 
