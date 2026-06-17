@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://remyuu.github.io/VIS_Hiroshima/sitemap.xml

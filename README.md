@@ -2,6 +2,8 @@
 
 HPC Documentation for Visual Information Science Laboratory, Hiroshima University
 
+Site: https://remyuu.github.io/VIS_Hiroshima/
+
 ## Languages
 
 This project uses **English** as the canonical source language.
