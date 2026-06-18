@@ -81,7 +81,7 @@
   <a class="vis-card" href="troubleshooting/faq/">
     <span class="vis-card-label">Q&amp;A</span>
     <strong>FAQ</strong>
-    <p>接続、権限、環境、実験実行に関するよくある問題をまとめるためのページです。現在はプレースホルダーです。</p>
+    <p>接続、権限、環境、実験実行に関するよくある問題をまとめるためのページです。</p>
   </a>
   <a class="vis-card" href="analytics/">
     <span class="vis-card-label">サイト統計</span>

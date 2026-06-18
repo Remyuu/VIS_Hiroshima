@@ -71,7 +71,7 @@
   <a class="vis-card" href="running-experiments/resource-guidelines/">
     <span class="vis-card-label">共享资源</span>
     <strong>GPU / 硬盘 / 内存使用规范</strong>
-    <p>启动训练前检查 <code>nvidia-smi</code>、<code>free -h</code>、<code>df -h</code> 和目录占用，避免服务器资源。</p>
+    <p>启动训练前检查 <code>nvidia-smi</code>、<code>free -h</code>、<code>df -h</code> 和目录占用，避免占用过多共享资源。</p>
   </a>
 </div>
 
@@ -81,7 +81,7 @@
   <a class="vis-card" href="troubleshooting/faq/">
     <span class="vis-card-label">Q&A</span>
     <strong>常见问题</strong>
-    <p>用于汇总连接、权限、环境和实验运行中的常见问题；当前页面仍是占位内容。</p>
+    <p>用于汇总连接、权限、环境和实验运行中的常见问题。</p>
   </a>
   <a class="vis-card" href="analytics/">
     <span class="vis-card-label">站点统计</span>
