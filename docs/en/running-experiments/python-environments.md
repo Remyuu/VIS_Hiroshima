@@ -213,21 +213,44 @@ This ensures that `pip` belongs to the currently activated Python environment.
 
     Do not run `pip install` before activating the conda environment.
 
-## 8. Use a Specific CUDA Toolkit Version in a conda Environment
+## 8. Use a Specific CUDA-Toolkit Version in a conda Environment
 
 The lab servers are shared by multiple users. Do not try to install or modify CUDA at the OS level yourself. Global changes to `/usr/local/cuda`, system environment variables, or driver-related components may affect experiments that other students are currently running.
 
-A safer approach is to install the CUDA Toolkit or deep learning framework CUDA version required by your project inside your own conda environment. This allows different projects to use different CUDA-related dependencies without modifying the system-wide environment.
+A safer approach is to install the CUDA runtime, CUDA Toolkit, or deep learning framework CUDA version required by your project inside your own conda environment. This allows different projects to use different CUDA-related dependencies without modifying the system-wide environment.
 
-!!! note "CUDA Toolkit is not the NVIDIA driver"
+!!! note "First distinguish several concepts"
 
-    The `cuda-toolkit` installed inside a conda environment mainly provides compiler tools, header files, and user-space libraries, such as `nvcc`. The GPU driver is still a system-level component and should be maintained by the administrator.
+    - "NVIDIA Driver / GPU driver" is a system-level component and is maintained by the administrator. Whether `nvidia-smi` can show the GPU normally mainly depends on the driver.
+    - "CUDA Runtime" is the user-space library required to run already compiled CUDA programs. Many PyTorch / TensorFlow installation packages basically include it.
+    - "**CUDA Toolkit**" is the complete toolkit for development and compilation. It usually includes header files, libraries, debugging / profiling tools, and compilation-related tools such as `nvcc`.
+    - "`nvcc`" is NVIDIA CUDA Compiler Driver. It is used to compile `.cu` files, CUDA extensions, or packages that require local CUDA compilation. When you only train and infer PyTorch models, you usually do not need to install `nvcc` separately.
 
-    If the server's system driver is too old, a newer CUDA Toolkit installed inside a conda environment may still fail to run the corresponding GPU program.
+!!! warning "Do not install CUDA into base"
 
-If you only need to install frameworks such as PyTorch or TensorFlow, usually check the framework's official installation command first. For example, PyTorch provides installation commands for different CUDA versions. Do not blindly install a system-level CUDA first.
+    NVIDIA also officially recommends installing CUDA in a dedicated conda environment instead of the `base` environment. CUDA / PyTorch / Python versions often differ between experiment projects. Mixing them into `base` makes later debugging difficult.
 
-If your project needs `nvcc`, for example to compile a CUDA extension, install a package that requires local CUDA compilation, or satisfy a course / code requirement for a specific CUDA Toolkit version, install the specified version inside the activated project environment.
+### 8.1 When You Need to Install What
+
+If you only need to install frameworks such as PyTorch or TensorFlow, usually check the framework's official installation page first. For example, PyTorch will let you choose Linux, installation method, Python, and CUDA version, and then generate the corresponding command. In this case, you generally do not need to install a system-level CUDA Toolkit first, and you do not necessarily need `nvcc`.
+
+If an installation package says it cannot find `nvcc`, or if the project README explicitly requires a specific CUDA Toolkit version, you need to install CUDA Toolkit to compile CUDA code.
+
+If the error only says `nvcc` is missing, you can first try installing only `cuda-nvcc`.
+
+### 8.2 Where to Check CUDA Versions
+
+Generally, you can use the NVIDIA official site [NVIDIA CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive) to view official CUDA Toolkit historical versions, release dates, and corresponding documentation.
+
+You can also use the Conda official site [`cuda-toolkit` labels on Anaconda.org](https://anaconda.org/nvidia/cuda-toolkit/labels) to view CUDA labels available for conda packages, such as `cuda-11.6.2` and `cuda-12.4.0`.
+
+If you want to install `nvcc` separately, please read [`cuda-nvcc` on Anaconda.org](https://anaconda.org/nvidia/cuda-nvcc).
+
+!!! tip "Relationship between version numbers and conda labels"
+
+    When installing older NVIDIA CUDA packages with conda, a common pattern is to write the version in the channel label, for example `-c nvidia/label/cuda-12.4.0`. This label should match a label listed on Anaconda.org.
+
+### 8.3 Recommended Installation Method: Install Inside the Project Environment
 
 For example, create an environment that needs CUDA 11.6:
 
@@ -236,11 +259,37 @@ conda create -n cuda116-demo python=3.10 -y
 conda activate cuda116-demo
 ```
 
-Install CUDA 11.6 Toolkit in this environment:
+The official NVIDIA conda installation instructions are in [CUDA Installation Guide for Linux: Conda Installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#conda-installation). On lab servers, prefer installing inside the project's own conda environment.
+
+Common NVIDIA conda packages can be understood like this:
+
+| Package | Suitable situation | Explanation |
+| --- | --- | --- |
+| `cuda-toolkit` | You need a relatively complete CUDA Toolkit | Contains common CUDA development tools, header files, and libraries. |
+| `cuda` | The project README or official NVIDIA command explicitly requires it | A meta-package used in NVIDIA official documentation to install a group of CUDA Toolkit components. |
+| `cuda-nvcc` | The error only lacks `nvcc`, or you only need the CUDA compiler | Smaller than the complete Toolkit; if header files or libraries are missing later, install `cuda-toolkit`. |
+
+If you need a relatively complete CUDA Toolkit, you can install `cuda-toolkit`:
 
 ```bash
 conda install -c nvidia/label/cuda-11.6.2 cuda-toolkit
 ```
+
+If the project README directly requires an official NVIDIA conda CUDA package, you may also see the `cuda` meta-package. It installs a group of CUDA Toolkit components:
+
+```bash
+conda install -c nvidia/label/cuda-11.6.2 cuda
+```
+
+If the error only lacks `nvcc`, you can first install the smaller `cuda-nvcc`:
+
+```bash
+conda install -c nvidia/label/cuda-11.6.2 cuda-nvcc
+```
+
+**Which package to install should be decided first by the project README, course instructions, or error message. Generally speaking, if you only run PyTorch / TensorFlow, use the framework's official command to install the framework first, and do not install Toolkit first; if you need to compile `.cu` or CUDA extensions, install `cuda-toolkit` first; if the error only lacks `nvcc`, you can first try installing only `cuda-nvcc`. When you need a complete CUDA development environment, install `cuda-toolkit` or the `cuda` meta-package explicitly required by the project.**
+
+### 8.4 Verify CUDA and `nvcc` in the Current Environment
 
 After installation, check:
 
@@ -259,6 +308,8 @@ Cuda compilation tools, release 11.6, V11.6.124
 Build cuda_11.6.r11.6/compiler.31057947_0
 ```
 
+If `which nvcc` points to the current conda environment, for example `~/opt/miniforge3/envs/cuda116-demo/bin/nvcc`, it means you are using `nvcc` from this environment.
+
 It is also recommended to check the system GPU and driver status:
 
 ```bash
@@ -269,7 +320,48 @@ nvidia-smi
     ![cuda-version](../../assets/images/running-experiments/image3.png){ loading=lazy, width="80%" }
 </figure>
 
-Note that the `CUDA Version` shown by `nvidia-smi` means the highest CUDA runtime version supported by the current system driver. It is not necessarily the same as the CUDA Toolkit version shown by `nvcc -V` inside your current conda environment. To determine the Toolkit version of the current environment, use `which nvcc` and `nvcc -V`.
+Note that the `CUDA Version` shown by `nvidia-smi` means the highest CUDA runtime version supported by the current system driver. It is not necessarily the same as the CUDA Toolkit version shown by `nvcc -V` inside your current conda environment. To determine the Toolkit / `nvcc` version of the current environment, use `which nvcc` and `nvcc -V`.
+
+If PyTorch is installed in the current environment, you can also use Python to check the CUDA situation seen by PyTorch:
+
+```bash
+python - <<'PY'
+import torch
+print("torch:", torch.__version__)
+print("torch cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+PY
+```
+
+Here `torch.version.cuda` means the CUDA version corresponding to the current PyTorch build, and it is also not necessarily equal to the version shown by system `nvidia-smi`.
+
+### 8.5 Common Questions
+
+**`nvidia-smi` shows CUDA 12.x. Does that mean I have already installed CUDA Toolkit?**
+
+Not necessarily. The `CUDA Version` in `nvidia-smi` is only the highest CUDA runtime version supported by the driver.
+
+**What should I do with `nvcc: command not found`?**
+
+Confirm whether you have activated the correct conda environment:
+
+```bash
+conda activate cuda116-demo
+which python
+which nvcc
+```
+
+If there is no output, it means the current environment does not have `nvcc` installed.
+
+**Can I install CUDA with pip?**
+
+NVIDIA also provides pip wheels, which are suitable for some Python runtime dependencies. However, the pip method is mainly for Python package dependency management, and does not always include complete development tools. For project environments on lab servers, prefer using the framework's official command or conda installation; only use NVIDIA CUDA packages from pip when the project explicitly requires it.
+
+**What happens if the driver is too old?**
+
+If the server's system driver is too old, even if you install a newer CUDA Toolkit inside the conda environment, the corresponding GPU program may still fail to run. When you encounter this kind of problem, please contact the administrator.
+
+### 8.6 Activate the Environment Again After Logging In
 
 After logging in to the server again, reactivate the environment:
 
@@ -426,5 +518,9 @@ If the reverse command is unavailable, manually edit `~/.bashrc` and remove the 
 - [Yale Center for Research Computing: Jupyter Conda Environments](https://docs.ycrc.yale.edu/clusters-at-yale/access/ood-jupyter/)
 - [conda-forge/miniforge](https://github.com/conda-forge/miniforge)
 - [NVIDIA CUDA Installation Guide for Linux: Conda Installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+- [NVIDIA CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
 - [NVIDIA cuda-toolkit on Anaconda.org](https://anaconda.org/nvidia/cuda-toolkit)
+- [NVIDIA cuda-toolkit labels on Anaconda.org](https://anaconda.org/nvidia/cuda-toolkit/labels)
+- [NVIDIA cuda-nvcc on Anaconda.org](https://anaconda.org/nvidia/cuda-nvcc)
+- [NVIDIA CUDA Compiler Driver NVCC](https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html)
 - [PyTorch: Get Started Locally](https://pytorch.org/get-started/locally/)
