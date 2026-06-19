@@ -218,17 +218,40 @@ python -m pip install package-name
 
 实验室服务器是多人共用环境，不要试图在 OS 系统层面自行安装或修改 CUDA。全局修改 `/usr/local/cuda`、系统环境变量或驱动相关内容，可能会影响其他同学正在运行的实验。
 
-更安全的做法是：在自己的 conda 环境里安装项目需要的 CUDA Toolkit 或深度学习框架 CUDA 版本。这样不同项目可以使用不同版本的 CUDA 相关依赖，同时不会修改系统全局环境。
+更安全的做法是：在自己的 conda 环境里安装项目需要的 CUDA 运行时、CUDA Toolkit 或深度学习框架的 CUDA 版本。这样不同项目可以使用不同版本的 CUDA 相关依赖，同时不会修改系统全局环境。
 
-!!! note "CUDA Toolkit 不是 NVIDIA 驱动"
+!!! note "先区分几个概念"
 
-    conda 环境里安装的 `cuda-toolkit` 主要提供编译工具、头文件和用户态库，例如 `nvcc`。GPU 驱动仍然是系统层面的组件，应由管理员维护。
+    - 「NVIDIA Driver / GPU 驱动」是系统层面的组件，由管理员维护。`nvidia-smi` 能否正常显示 GPU，主要取决于驱动。
+    - 「CUDA Runtime / CUDA 运行时」是运行已经编译好的 CUDA 程序所需的用户态库。很多 PyTorch / TensorFlow 安装包基本会自带。
+    - 「**CUDA Toolkit**」是面向开发和编译的完整工具包，通常包含头文件、库、调试 / 分析工具，以及 `nvcc` 等编译相关工具。
+    - 「`nvcc`」全程 NVIDIA CUDA Compiler Driver，用来编译 `.cu` 文件、CUDA extension 或需要本地 CUDA 编译的包。只训练和推理 PyTorch 模型时，通常不需要单独安装 `nvcc`。
 
-    如果服务器系统驱动太旧，即使 conda 环境里安装了较新的 CUDA Toolkit，也可能无法正常运行对应的 GPU 程序。
+!!! warning "不要把 CUDA 装进 base"
 
-如果只是安装 PyTorch、TensorFlow 等框架，通常优先看框架官方给出的安装命令。例如 PyTorch 会提供对应 CUDA 版本的安装方式。不要盲目先装一个系统级 CUDA。
+    NVIDIA 官方也建议把 CUDA 安装在专用 conda 环境里，而不是 `base` 环境。实验项目之间的 CUDA / PyTorch / Python 版本经常不同，把它们混在 `base` 里后期很难排查。
 
-如果项目需要 `nvcc`，例如编译 CUDA extension、安装需要本地 CUDA 编译的包，或者课程 / 代码明确要求某个 CUDA Toolkit 版本，可以在已经激活的项目环境里安装指定版本。
+### 8.1 什么时候需要安装什么
+
+如果只是安装 PyTorch、TensorFlow 等框架，通常优先看框架官方安装页给出的命令。例如 PyTorch 会让你选择 Linux、安装方式、Python、CUDA 版本，然后生成对应命令。此时一般不需要先安装系统级 CUDA Toolkit，也不一定需要 `nvcc`。
+
+如果安装包提示找不到 `nvcc`，或者是项目的 README 里明确要求某个 CUDA Toolkit 版本，就需要安装 CUDA Toolkit 来编译 CUDA 代码。
+
+如果报错只说明缺少 `nvcc`，可以先尝试只安装 `cuda-nvcc`。
+
+### 8.2 从哪里查 CUDA 版本
+
+一般可以通过 Nvidia 官网 [NVIDIA CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive) 查看 CUDA Toolkit 官方历史版本、发布时间和对应文档。
+
+也可以在 Conda 官网 [`cuda-toolkit` labels on Anaconda.org](https://anaconda.org/nvidia/cuda-toolkit/labels) 查看 conda 包可用的 CUDA 标签，例如 `cuda-11.6.2`、`cuda-12.4.0`。
+
+如果要单独安装 `nvcc`，请阅读 [`cuda-nvcc` on Anaconda.org](https://anaconda.org/nvidia/cuda-nvcc) 。
+
+!!! tip "版本号和 conda label 的关系"
+
+    conda 安装旧版 NVIDIA CUDA 包时，常见写法是把版本写在 channel label 里，例如 `-c nvidia/label/cuda-12.4.0`。这个 label 要和 Anaconda.org 上列出的 label 对得上。
+
+### 8.3 推荐安装方式：项目环境内安装
 
 例如新建一个需要 CUDA 11.6 的环境：
 
@@ -237,11 +260,37 @@ conda create -n cuda116-demo python=3.10 -y
 conda activate cuda116-demo
 ```
 
-在这个环境中安装 CUDA 11.6 Toolkit：
+NVIDIA 官方 conda 安装说明见 [CUDA Installation Guide for Linux: Conda Installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#conda-installation)。在实验室服务器上，优先在项目自己的 conda 环境里安装。
+
+常见 NVIDIA conda 包可以这样理解：
+
+| 包名 | 适合情况 | 说明 |
+| --- | --- | --- |
+| `cuda-toolkit` | 需要比较完整的 CUDA Toolkit | 包含 CUDA 开发常用的工具、头文件和库。 |
+| `cuda` | 项目 README 或 NVIDIA 官方命令明确要求 | NVIDIA 官方文档中用于安装一组 CUDA Toolkit 组件的元包。 |
+| `cuda-nvcc` | 报错只缺 `nvcc`，或只需要 CUDA 编译器 | 比完整 Toolkit 小；如果后续又缺头文件或库，再安装 `cuda-toolkit`。 |
+
+如果需要比较完整的 CUDA Toolkit，可以安装 `cuda-toolkit`：
 
 ```bash
 conda install -c nvidia/label/cuda-11.6.2 cuda-toolkit
 ```
+
+如果项目 README 直接要求 NVIDIA 官方 conda CUDA 包，也可能看到 `cuda` 这个元包。它会安装一组 CUDA Toolkit 组件：
+
+```bash
+conda install -c nvidia/label/cuda-11.6.2 cuda
+```
+
+如果报错只缺少 `nvcc`，可以先安装更小的 `cuda-nvcc`：
+
+```bash
+conda install -c nvidia/label/cuda-11.6.2 cuda-nvcc
+```
+
+**安装哪个包，优先按照项目 README、课程说明或报错信息决定。一般来说，只运行 PyTorch / TensorFlow 优先用框架官方命令安装框架，不要先装 Toolkit；若需要编译 `.cu` 或 CUDA extension，则优先安装 `cuda-toolkit`；如果报错只缺 `nvcc`，可以先尝试只装 `cuda-nvcc`。需要完整 CUDA 开发环境时，安装 `cuda-toolkit` 或项目明确要求的 `cuda` 元包。**
+
+### 8.4 验证当前环境中的 CUDA 和 `nvcc`
 
 安装完成后检查：
 
@@ -260,6 +309,8 @@ Cuda compilation tools, release 11.6, V11.6.124
 Build cuda_11.6.r11.6/compiler.31057947_0
 ```
 
+如果 `which nvcc` 指向当前 conda 环境，例如 `~/opt/miniforge3/envs/cuda116-demo/bin/nvcc`，说明正在使用这个环境里的 `nvcc`。
+
 也建议同时看一下系统 GPU 和驱动状态：
 
 ```bash
@@ -270,7 +321,48 @@ nvidia-smi
     ![cuda-version](../../assets/images/running-experiments/image3.png){ loading=lazy, width="80%" }
 </figure>
 
-注意，`nvidia-smi` 中显示的 `CUDA Version` 表示当前系统驱动最高支持的 CUDA 运行时版本，不一定等于你当前 conda 环境里 `nvcc -V` 显示的 CUDA Toolkit 版本。判断当前环境的 Toolkit 版本时，以 `which nvcc` 和 `nvcc -V` 为准。
+注意，`nvidia-smi` 中显示的 `CUDA Version` 表示当前系统驱动最高支持的 CUDA 运行时版本，不一定等于你当前 conda 环境里 `nvcc -V` 显示的 CUDA Toolkit 版本。判断当前环境的 Toolkit / `nvcc` 版本时，以 `which nvcc` 和 `nvcc -V` 为准。
+
+如果当前环境安装了 PyTorch，也可以用 Python 检查 PyTorch 看到的 CUDA 情况：
+
+```bash
+python - <<'PY'
+import torch
+print("torch:", torch.__version__)
+print("torch cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+PY
+```
+
+这里的 `torch.version.cuda` 表示当前 PyTorch 构建所对应的 CUDA 版本，也不一定等于系统 `nvidia-smi` 显示的版本。
+
+### 8.5 常见问题
+
+**`nvidia-smi` 显示 CUDA 12.x，是不是我已经安装了 CUDA Toolkit？**
+
+不一定。`nvidia-smi` 里的 `CUDA Version` 只是驱动支持的最高 CUDA 运行时版本。
+
+**`nvcc: command not found` 怎么办？**
+
+确认是否激活了正确的 conda 环境：
+
+```bash
+conda activate cuda116-demo
+which python
+which nvcc
+```
+
+如果没有输出，说明当前环境没有安装 `nvcc`。
+
+**可以用 pip 安装 CUDA 吗？**
+
+NVIDIA 也提供 pip wheels，适合某些 Python 运行时依赖。但 pip 方式主要面向 Python 包依赖管理，并不总是包含完整开发工具。对实验室服务器上的项目环境，优先使用框架官方命令或 conda 安装；只有项目明确要求时再使用 pip 的 NVIDIA CUDA 包。
+
+**驱动太旧会怎样？**
+
+如果服务器系统驱动太旧，即使 conda 环境里安装了较新的 CUDA Toolkit，也可能无法正常运行对应的 GPU 程序。遇到这类问题，请联系管理员。
+
+### 8.6 重新登录后激活环境
 
 重新登录服务器后，需要重新激活环境：
 
@@ -427,5 +519,9 @@ rm -rf ~/opt/miniforge3
 - [Yale Center for Research Computing: Jupyter Conda Environments](https://docs.ycrc.yale.edu/clusters-at-yale/access/ood-jupyter/)
 - [conda-forge/miniforge](https://github.com/conda-forge/miniforge)
 - [NVIDIA CUDA Installation Guide for Linux: Conda Installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+- [NVIDIA CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
 - [NVIDIA cuda-toolkit on Anaconda.org](https://anaconda.org/nvidia/cuda-toolkit)
+- [NVIDIA cuda-toolkit labels on Anaconda.org](https://anaconda.org/nvidia/cuda-toolkit/labels)
+- [NVIDIA cuda-nvcc on Anaconda.org](https://anaconda.org/nvidia/cuda-nvcc)
+- [NVIDIA CUDA Compiler Driver NVCC](https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html)
 - [PyTorch: Get Started Locally](https://pytorch.org/get-started/locally/)
